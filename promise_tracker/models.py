@@ -61,9 +61,9 @@ class Politician(models.Model):
 
 class PartyValidity(models.Model):
     politician = models.ForeignKey(
-        Politician, related_name='parties_validity', on_delete=models.SET_NULL, null=True)
+        Politician, related_name='parties_validity', on_delete=models.CASCADE, null=True)
     party = models.ForeignKey(
-        Party, related_name='parties_validity', on_delete=models.SET_NULL, null=True, blank=True)
+        Party, related_name='parties_validity', on_delete=models.CASCADE, null=True, blank=True)
     ini = models.DateField()
     end = models.DateField()
 
