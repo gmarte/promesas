@@ -1,4 +1,9 @@
 
+from django.views import View
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 import json
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
@@ -10,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 
-from .models import User
+from .models import Promise, Evidence, Party, Position, Politician, Source, User
 
 
 def index(request):
@@ -73,3 +78,54 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "promise_tracker/register.html")
+
+
+""" MODEL APP VIEWS"""
+
+
+class PromiseBaseView(View):
+    model = Promise
+    fields = '__all__'
+    success_url = reverse_lazy('promise:index')
+
+
+class PromiseListView(PromiseBaseView, ListView):
+    """View to list all pipromise.
+    Use the 'promise_list' variable in the template
+    to access all Promise objects"""
+
+
+class PromiseCreateView(PromiseBaseView, CreateView):
+    template_name = 'promise/promise_form.html'
+    """View to create a new promise"""
+
+
+class PositionBaseView(View):
+    model = Position
+    fields = '__all__'
+    success_url = reverse_lazy('index')
+
+
+class PositionListView(PositionBaseView, ListView):
+    """View to list all Positions.
+    Use the 'Position_list' variable in the template
+    to access all Position objects"""
+
+
+class PositionDetailView(PositionBaseView, DetailView):
+    """View to list the details from one Position.
+    Use the 'Position' variable in the template to access
+    the specific Position here and in the Views below"""
+
+
+class PositionCreateView(PositionBaseView, CreateView):
+    template_name = 'position/position_form.html'
+    """View to create a new Position"""
+
+
+class PositionUpdateView(PositionBaseView, UpdateView):
+    """View to update a Position"""
+
+
+class PositionDeleteView(PositionBaseView, DeleteView):
+    """View to delete a Position"""

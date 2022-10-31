@@ -26,10 +26,7 @@
                 <li class="nav-item ">
                   <a class="nav-link text-white" href="{% url 'index' %}">All Posts</a>
                 </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="{% url 'position_create' %}">Position create</a>
-                    </li>               
+                {% if user.is_authenticated %}                    
                     <li class="nav-item">
                         <a class="nav-link text-white" href="{% url 'logout' %}">Log Out</a>
                     </li>
