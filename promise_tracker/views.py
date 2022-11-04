@@ -107,6 +107,7 @@ class PositionBaseView(View):
 
 
 class PositionListView(PositionBaseView, ListView):
+    template_name = 'position/position_list.html'
     """View to list all Positions.
     Use the 'Position_list' variable in the template
     to access all Position objects"""
