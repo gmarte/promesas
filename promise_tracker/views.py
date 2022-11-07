@@ -102,8 +102,8 @@ class PromiseCreateView(PromiseBaseView, CreateView):
 
 class PositionBaseView(View):
     model = Position
-    fields = '__all__'
-    success_url = reverse_lazy('index')
+    fields = ['name']
+    success_url = reverse_lazy('positions')
 
 
 class PositionListView(PositionBaseView, ListView):
@@ -121,7 +121,7 @@ class PositionDetailView(PositionBaseView, DetailView):
 
 class PositionCreateView(PositionBaseView, CreateView):
     template_name = 'position/position_form.html'
-    """View to create a new Position"""
+    # template_name = 'position/position_form.html'
 
 
 class PositionUpdateView(PositionBaseView, UpdateView):

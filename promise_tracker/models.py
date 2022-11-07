@@ -15,7 +15,7 @@ class User(AbstractUser):
 
 
 class Position(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=200)
 
 
 class Party(models.Model):
