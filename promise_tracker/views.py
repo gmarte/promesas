@@ -125,6 +125,7 @@ class PositionCreateView(PositionBaseView, CreateView):
 
 
 class PositionUpdateView(PositionBaseView, UpdateView):
+    template_name = 'position/position_form.html'
     """View to update a Position"""
 
 
