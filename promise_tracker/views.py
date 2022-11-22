@@ -114,6 +114,8 @@ class PositionListView(PositionBaseView, ListView):
 
 
 class PositionDetailView(PositionBaseView, DetailView):
+    template_name = 'position/position_detail.html'
+    
     """View to list the details from one Position.
     Use the 'Position' variable in the template to access
     the specific Position here and in the Views below"""
@@ -130,4 +132,43 @@ class PositionUpdateView(PositionBaseView, UpdateView):
 
 
 class PositionDeleteView(PositionBaseView, DeleteView):
+    template_name = 'position/position_confirm_delete.html'
     """View to delete a Position"""
+
+### Parties
+
+
+class PartyBaseView(View):
+    model = Party
+    fields = '__all__'
+    success_url = reverse_lazy('parties')
+
+
+class PartyListView(PartyBaseView, ListView):
+    template_name = 'party/party_list.html'
+    """View to list all Partys.
+    Use the 'Party_list' variable in the template
+    to access all Party objects"""
+
+
+class PartyDetailView(PartyBaseView, DetailView):
+    template_name = 'Party/Party_detail.html'
+    
+    """View to list the details from one Party.
+    Use the 'Party' variable in the template to access
+    the specific Party here and in the Views below"""
+
+
+class PartyCreateView(PartyBaseView, CreateView):
+    template_name = 'Party/Party_form.html'
+    # template_name = 'Party/Party_form.html'
+
+
+class PartyUpdateView(PartyBaseView, UpdateView):
+    template_name = 'Party/Party_form.html'
+    """View to update a Party"""
+
+
+class PartyDeleteView(PartyBaseView, DeleteView):
+    template_name = 'Party/Party_confirm_delete.html'
+    """View to delete a Party"""

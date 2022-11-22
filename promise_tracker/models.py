@@ -26,6 +26,9 @@ class Party(models.Model):
     logo = models.ImageField(null=True, blank=True, upload_to='party_logo')
     acronym = models.CharField(max_length=10, blank=True)
 
+    def __str__(self):
+        return self.acronym + " - " + self.name
+
     class Meta:
         verbose_name = "Party"
         verbose_name_plural = "Parties"

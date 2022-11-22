@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block body %}
-    <h1>Posiciones </h1>
+    <h1>Positions</h1>
     <ul>
     {% for position in position_list %}
                 <li>
                     <span>{{ position }}</span>
-                    <a href="{% url 'position_update' position.id %} ">Update</a>
+                    <a href="{% url 'position_detail' position.id %}">View</a>
+                    <a href="{% url 'position_update' position.id %}">Update</a>
                     <a href="{% url 'position_delete' position.id %}">Delete</a>
                 </li>
     {% endfor %}    

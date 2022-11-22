@@ -25,6 +25,17 @@ urlpatterns = [
          views.PositionUpdateView.as_view(), name='position_update'),
     path('positions/<int:pk>/delete/',
          views.PositionDeleteView.as_view(), name='position_delete'),
+     #parties
+     path('parties/',
+         views.PartyListView.as_view(), name='parties'),
+    path('parties/<int:pk>/detail',
+         views.PartyDetailView.as_view(), name='party_detail'),
+    path('parties/create/', views.PartyCreateView.as_view(),
+         name='party_create'),
+    path('parties/<int:pk>/update/',
+         views.PartyUpdateView.as_view(), name='party_update'),
+    path('parties/<int:pk>/delete/',
+         views.PartyDeleteView.as_view(), name='party_delete'),
 ]
 
 if settings.DEBUG:

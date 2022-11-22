@@ -1,0 +1,23 @@
+{% extends "promise_tracker/layout.html" %}
+{% load static %}
+
+{% block body %}
+{% url 'positions' as position_list %}
+
+<div class="container d-flex justify-content-center mt-5" style="width: 50%;">
+    <div class="col mt-5 text-center">
+        <h1 class="mb-5">Delete Position</h1>
+
+        <p class="h5">Are you sure you want to delete the position?</p>
+        <h3 class="my-5">{{ position }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+            {% comment %} <input type="submit" value="Confirm">
+            <input type="submit" value="Cancel" onclick="window.location='{% url 'positions' %}'; return false;"> {% endcomment %}
+            <input type="submit" class="btn btn-primary btn-lg" value="Confirm" style="margin-right: 30px; margin-top: 30px;">
+            <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{{position_list}}'; return false;" value="Cancel">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

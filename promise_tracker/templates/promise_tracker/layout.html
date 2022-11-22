@@ -29,12 +29,23 @@
                             </li>
                             {% if user.is_superuser %}
                             <li class="nav-item dropdown">                                
+                                <a href="{% url 'parties' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Parties</a>
+                                <div class="dropdown-menu">
+                                    <a href="{% url 'party_create' %}" class="dropdown-item">New</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="{% url 'parties' %}" class="dropdown-item">List</a>
+                                                                                                            
+                                    <div class="dropdown-divider"></div>
+                                </div>
+                            </li>
+                            {% endif %}
+                            {% if user.is_superuser %}
+                            <li class="nav-item dropdown">                                
                                 <a href="{% url 'positions' %}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Positions</a>
                                 <div class="dropdown-menu">
-                                    <a href="{% url 'positions' %}" class="dropdown-item">List</a>
-                                    <a href="{% url 'position_create' %}" class="dropdown-item">New</a>                                                                        
+                                    <a href="{% url 'position_create' %}" class="dropdown-item">New</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="#"class="dropdown-item bg-danger">Delete</a>
+                                    <a href="{% url 'positions' %}" class="dropdown-item">List</a>
                                 </div>
                             </li>
                             {% endif %}
