@@ -14,6 +14,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
+from PIL import Image
 
 from .models import Promise, Evidence, Party, Position, Politician, Source, User
 
@@ -160,15 +161,64 @@ class PartyDetailView(PartyBaseView, DetailView):
 
 
 class PartyCreateView(PartyBaseView, CreateView):
-    template_name = 'Party/Party_form.html'
+    template_name = 'party/party_form.html'
     # template_name = 'Party/Party_form.html'
+    # def post(self, request, *args, **kwargs):
+    #     form = self.form_class(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         form.save()
 
 
 class PartyUpdateView(PartyBaseView, UpdateView):
-    template_name = 'Party/Party_form.html'
+    template_name = 'party/party_form.html'
     """View to update a Party"""
+    # def post(self, request, *args, **kwargs):
+    #     print(request.FILES)
+    #     return super().post(self,request, *args, **kwargs)
+    # def form_valid(self, form):
+    #     print(form.cleaned_data)
+    #     return super().form_valid(form)
+            
 
 
 class PartyDeleteView(PartyBaseView, DeleteView):
     template_name = 'Party/Party_confirm_delete.html'
     """View to delete a Party"""
+
+
+
+
+class PoliticianBaseView(View):
+    model = Politician
+    fields = '__all__'
+    success_url = reverse_lazy('politicians')
+
+
+class PoliticianListView(PoliticianBaseView, ListView):
+    template_name = 'politician/politician_list.html'
+    """View to list all Politicians.
+    Use the 'Politician_list' variable in the template
+    to access all Politician objects"""
+
+
+class PoliticianDetailView(PoliticianBaseView, DetailView):
+    template_name = 'politician/politician_detail.html'
+    
+    """View to list the details from one Politician.
+    Use the 'Politician' variable in the template to access
+    the specific Politician here and in the Views below"""
+
+
+class PoliticianCreateView(PoliticianBaseView, CreateView):
+    template_name = 'politician/politician_form.html'
+    # template_name = 'politician/politician_form.html'
+
+
+class PoliticianUpdateView(PoliticianBaseView, UpdateView):
+    template_name = 'politician/politician_form.html'
+    """View to update a Politician"""
+
+
+class PoliticianDeleteView(PoliticianBaseView, DeleteView):
+    template_name = 'politician/politician_confirm_delete.html'
+    """View to delete a Politician"""

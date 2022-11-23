@@ -6,7 +6,7 @@
     <ul>
     {% for party in party_list %}
                 <li>
-                    <span>{{ party. }}</span>
+                    <span>{{ party }}</span>
                     <a href="{% url 'party_detail' party.id %} ">View</a>
                     <a href="{% url 'party_update' party.id %} ">Update</a>
                     <a href="{% url 'party_delete' party.id %}">Delete</a>

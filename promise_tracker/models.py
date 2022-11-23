@@ -23,7 +23,7 @@ class Position(models.Model):
 
 class Party(models.Model):
     name = models.CharField(max_length=64, blank=False, null=False)
-    logo = models.ImageField(null=True, blank=True, upload_to='party_logo')
+    logo = models.ImageField(null=True, blank=True, upload_to='parties/')
     acronym = models.CharField(max_length=10, blank=True)
 
     def __str__(self):
@@ -61,7 +61,7 @@ class Politician(models.Model):
         choices=EDUCATION_CHOICES,
         default=PRIMARIA,
     )
-    photo = models.ImageField(null=True, blank=True, upload_to='profile_pic')
+    photo = models.ImageField(null=True, blank=True, upload_to='politician/')
     status = models.BooleanField(default=False)
 
 

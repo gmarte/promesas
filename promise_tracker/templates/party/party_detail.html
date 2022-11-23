@@ -6,6 +6,9 @@
     <div class="col">
         <h1 class="text-center">Party Details</h1>
         <div class="d-flex justify-content-center">
+            <div>
+                <img src="{{party.logo.url}}"/>
+            </div>
             <table class="table table-striped mt-5" style="width: 50%">
                 <thead>
                     <tr>
@@ -25,7 +28,7 @@
                 <tr>
                     <td>Name</td>
                     <td>{{party.name}}</td>
-                    <img src="{{party.logo}}" />
+                    <img src="{{party.logo.url}}" />
                 </tr>
                 {% endif %}
                 </tbody>

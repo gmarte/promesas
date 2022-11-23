@@ -1,0 +1,15 @@
+{% extends "promise_tracker/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <h1>New Politician </h1>
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </div>
+    </form>
+    <div class="container">                
+        {% include "promise_tracker/paginator.html" %}                                      
+    </div>
+{% endblock %}

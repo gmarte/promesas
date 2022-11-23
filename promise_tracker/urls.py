@@ -36,8 +36,16 @@ urlpatterns = [
          views.PartyUpdateView.as_view(), name='party_update'),
     path('parties/<int:pk>/delete/',
          views.PartyDeleteView.as_view(), name='party_delete'),
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
+     #politician    
+     path('politicians/',
+         views.PoliticianListView.as_view(), name='politicians'),
+    path('politicians/<int:pk>/detail',
+         views.PoliticianDetailView.as_view(), name='politician_detail'),
+    path('politicians/create/', views.PoliticianCreateView.as_view(),
+         name='politician_create'),
+    path('politicians/<int:pk>/update/',
+         views.PoliticianUpdateView.as_view(), name='politician_update'),
+    path('politicians/<int:pk>/delete/',
+         views.PoliticianDeleteView.as_view(), name='politician_delete'),     
+]+ static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
