@@ -64,15 +64,17 @@ class Politician(models.Model):
     photo = models.ImageField(null=True, blank=True, upload_to='politician/')
     status = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.fname} {self.lname}"
+
 
 class PartyValidity(models.Model):
     politician = models.ForeignKey(
-        Politician, related_name='parties_validity', on_delete=models.CASCADE, null=True)
+        Politician, on_delete=models.CASCADE, null=True)
     party = models.ForeignKey(
-        Party, related_name='parties_validity', on_delete=models.CASCADE, null=True, blank=True)
+        Party, on_delete=models.CASCADE, null=True, blank=True)
     ini = models.DateField()
     end = models.DateField()
-
 
 class Rating(models.Model):
     title = models.CharField(max_length=40)

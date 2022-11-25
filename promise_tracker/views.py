@@ -15,8 +15,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from PIL import Image
+from django.forms import inlineformset_factory
 
-from .models import Promise, Evidence, Party, Position, Politician, Source, User
+# from .models import *
+from .models import Promise, Evidence, Party, Position, Politician, Source, User, PartyValidity
 
 
 def index(request):
@@ -100,6 +102,7 @@ class PromiseCreateView(PromiseBaseView, CreateView):
     template_name = 'promise/promise_form.html'
     """View to create a new promise"""
 
+### Position
 
 class PositionBaseView(View):
     model = Position
@@ -153,7 +156,7 @@ class PartyListView(PartyBaseView, ListView):
 
 
 class PartyDetailView(PartyBaseView, DetailView):
-    template_name = 'Party/Party_detail.html'
+    template_name = 'party/party_detail.html'
     
     """View to list the details from one Party.
     Use the 'Party' variable in the template to access
@@ -182,22 +185,20 @@ class PartyUpdateView(PartyBaseView, UpdateView):
 
 
 class PartyDeleteView(PartyBaseView, DeleteView):
-    template_name = 'Party/Party_confirm_delete.html'
+    template_name = 'party/party_confirm_delete.html'
     """View to delete a Party"""
-
-
 
 
 class PoliticianBaseView(View):
     model = Politician
-    fields = '__all__'
-    success_url = reverse_lazy('politicians')
+    fields = ['fname','lname','country','religion', 'education','photo','position']
+    success_url = reverse_lazy('politicians')    
 
 
 class PoliticianListView(PoliticianBaseView, ListView):
     template_name = 'politician/politician_list.html'
     """View to list all Politicians.
-    Use the 'Politician_list' variable in the template
+    Use the 'politician_list' variable in the template
     to access all Politician objects"""
 
 
@@ -210,8 +211,20 @@ class PoliticianDetailView(PoliticianBaseView, DetailView):
 
 
 class PoliticianCreateView(PoliticianBaseView, CreateView):
-    template_name = 'politician/politician_form.html'
-    # template_name = 'politician/politician_form.html'
+    template_name = 'politician/politician_form.html'    
+    # def get(request, *args, **kwargs):        
+    #     # context = {'context' : formset}
+    def get_context_data(self, **kwargs):
+        OrderFormSet = inlineformset_factory(Politician, PartyValidity, fields=('party', 'ini', 'end'))
+        formset = OrderFormSet(queryset=Politician.objects.none())
+        context = super().get_context_data(**kwargs)
+        context['formset'] = formset        
+        return context        
+
+    def form_valid(self, form):
+        print(form)
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
 
 class PoliticianUpdateView(PoliticianBaseView, UpdateView):

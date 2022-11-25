@@ -4,7 +4,7 @@
 {% block body %}
 <div class="container mt-5" style="width: 70%;">
     <div class="col">
-        <h1 class="text-center">Party Details</h1>
+        <h1 class="text-center">Politician Details</h1>
         <div class="d-flex justify-content-center">
             <table class="table table-striped mt-5" style="width: 50%">
                 <thead>
@@ -14,8 +14,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% if party.get_fields|length > 1 %}
-                    {% for label, value in party.get_fields  %}
+                {% if politician.get_fields|length > 1 %}
+                    {% for label, value in politician.get_fields  %}
                         <tr>
                             <td>{{label | upper}}</td>
                             <td>{{value}}</td>
@@ -24,7 +24,7 @@
                 {% else %}
                 <tr>
                     <td>Name</td>
-                    <td>{{party.name}}</td>
+                    <td>{{politician}}</td>
                     <img src="{{party.logo}}" />
                 </tr>
                 {% endif %}
@@ -33,7 +33,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <a href="{% url 'parties' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+            <a href="{% url 'politicians' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
         </div>
     </div>
         

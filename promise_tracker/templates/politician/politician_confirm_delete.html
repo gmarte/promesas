@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block body %}
-{% url 'parties' as party_list %}
+{% url 'politicians' as politician_list %}
 
 <div class="container d-flex justify-content-center mt-5" style="width: 50%;">
     <div class="col mt-5 text-center">
-        <h1 class="mb-5">Delete Position</h1>
+        <h1 class="mb-5">Delete Politician</h1>
 
-        <p class="h5">Are you sure you want to delete the party?</p>
-        <h3 class="my-5">{{ party }}</h3>
+        <p class="h5">Are you sure you want to delete the politician?</p>
+        <h3 class="my-5">{{ politician }}</h3>
         <form method="POST">
             {% csrf_token %}
             {% comment %} <input type="submit" value="Confirm">
-            <input type="submit" value="Cancel" onclick="window.location='{% url 'positions' %}'; return false;"> {% endcomment %}
+            <input type="submit" value="Cancel" onclick="window.location='{% url 'politician' %}'; return false;"> {% endcomment %}
             <input type="submit" class="btn btn-primary btn-lg" value="Confirm" style="margin-right: 30px; margin-top: 30px;">
-            <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{{position_list}}'; return false;" value="Cancel">
+            <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{{politician_list}}'; return false;" value="Cancel">
         </form>
     </div>
 </div>

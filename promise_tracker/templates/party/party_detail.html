@@ -5,13 +5,11 @@
 <div class="container mt-5" style="width: 70%;">
     <div class="col">
         <h1 class="text-center">Party Details</h1>
-        <div class="d-flex justify-content-center">
-            <div>
-                <img src="{{party.logo.url}}"/>
-            </div>
+        <div class="d-flex justify-content-center">            
             <table class="table table-striped mt-5" style="width: 50%">
                 <thead>
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
@@ -26,9 +24,9 @@
                     {% endfor %}
                 {% else %}
                 <tr>
+                    <td> {% if party.logo %}<img src="{{party.logo.url}}" /> {% endif %}</td>
                     <td>Name</td>
-                    <td>{{party.name}}</td>
-                    <img src="{{party.logo.url}}" />
+                    <td>{{party.name}}</td>                    
                 </tr>
                 {% endif %}
                 </tbody>
