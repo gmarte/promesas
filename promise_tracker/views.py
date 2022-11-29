@@ -88,11 +88,12 @@ def register(request):
 
 class PromiseBaseView(View):
     model = Promise
-    fields = '__all__'
-    success_url = reverse_lazy('promise:index')
+    fields = ['title','description', 'start_kpi', 'rating']
+    success_url = reverse_lazy('index')
 
 
 class PromiseListView(PromiseBaseView, ListView):
+    template_name = 'promise_tracker/index.html'
     """View to list all pipromise.
     Use the 'promise_list' variable in the template
     to access all Promise objects"""
@@ -101,6 +102,23 @@ class PromiseListView(PromiseBaseView, ListView):
 class PromiseCreateView(PromiseBaseView, CreateView):
     template_name = 'promise/promise_form.html'
     """View to create a new promise"""
+
+
+class PromiseDetailView(PromiseBaseView, DetailView):
+    template_name = 'promise/promise_detail.html'
+    
+    """View to list the details from one Promise.
+    Use the 'Promise' variable in the template to access
+    the specific Promise here and in the Views below"""    
+
+class PromiseUpdateView(PromiseBaseView, UpdateView):
+    template_name = 'promise/promise_form.html'
+    """View to update a Promise"""
+
+
+class PromiseDeleteView(PromiseBaseView, DeleteView):
+    template_name = 'promise/promise_confirm_delete.html'
+    """View to delete a Promise"""    
 
 ### Position
 

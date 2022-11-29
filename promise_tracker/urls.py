@@ -9,7 +9,23 @@ from django.conf.urls.static import static
 urlpatterns = [
     # path("", views.index, name="index"),
     path('', views.PromiseListView.as_view(), name='index'),
-    path('promise/create/', views.PromiseCreateView.as_view(), name='promise_create'),
+#     path('promise/create/', views.PromiseCreateView.as_view(), name='promise_create'),
+     # promises
+    # path('', views.PositionListView.as_view(), name='all'),
+    path('promises/',
+         views.PromiseListView.as_view(), name='promises'),
+    path('promises/<int:pk>/detail',
+         views.PromiseDetailView.as_view(), name='promise_detail'),
+    path('promises/create/', views.PromiseCreateView.as_view(),
+         name='promise_create'),
+    path('promises/<int:pk>/update/',
+         views.PromiseUpdateView.as_view(), name='promise_update'),
+    path('promises/<int:pk>/delete/',
+         views.PromiseDeleteView.as_view(), name='promise_delete'),
+
+
+
+
     path("login", views.login_view, name="login"),
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),

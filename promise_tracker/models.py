@@ -80,7 +80,12 @@ class Rating(models.Model):
     title = models.CharField(max_length=40)
     description = models.TextField()
     color = models.CharField(max_length=6)
+    order = models.IntegerField(default=1)
 
+    def __str__(self):
+        return f"{self.title}: {self.description}"
+    class Meta:
+        ordering = ['order']
 
 class Source(models.Model):
     NEWS = '01'
