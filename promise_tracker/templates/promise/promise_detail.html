@@ -1,0 +1,42 @@
+{% extends "promise_tracker/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container mt-5" style="width: 70%;">
+    <div class="col">
+        <h1 class="text-center">promise Details</h1>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped mt-5" style="width: 50%">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if promise.get_fields|length > 1 %}
+                    {% for label, value in promise.get_fields  %}
+                        <tr>
+                            <td>{{label | upper}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td>Name</td>
+                    <td>{{promise}}</td>
+                    <img src="{{party.logo}}" />
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'promises' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+        </div>
+    </div>
+        
+</div>
+
+{% endblock  %}
