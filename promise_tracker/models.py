@@ -111,7 +111,8 @@ class Promise(models.Model):
     rating = models.ForeignKey(
         Rating, related_name="ratings", on_delete=models.CASCADE)
     fuentes = models.ManyToManyField(Source, related_name="promise_sources")
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    politician = models.ForeignKey(Politician, on_delete=models.CASCADE)
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, default=None)
     date = models.DateField(auto_now_add=True)
     status = models.BooleanField(default=False)
 

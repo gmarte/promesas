@@ -88,7 +88,7 @@ def register(request):
 
 class PromiseBaseView(View):
     model = Promise
-    fields = ['title','description', 'start_kpi', 'rating']
+    fields = ['title','description', 'politician', 'start_kpi', 'rating']
     success_url = reverse_lazy('index')
 
 
