@@ -16,9 +16,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
 from PIL import Image
 from django.forms import inlineformset_factory
+from promise_tracker.forms import PromisesForm
 
-# from .models import *
-from .models import Promise, Evidence, Party, Position, Politician, Source, User, PartyValidity
+from .models import Promise, Evidence, Party, Position, Politician, Source, User, PartyValidity, Rating
 
 
 def index(request):
@@ -31,7 +31,7 @@ def index(request):
         "posts": page_obj,
     })
 
-
+# region User
 def login_view(request):
     if request.method == "POST":
         # Attempt to sign user in
@@ -81,19 +81,17 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "promise_tracker/register.html")
+# endregion
 
-
-""" MODEL APP VIEWS"""
-
-
+#region Promise
 class PromiseBaseView(View):
     model = Promise
-    fields = ['title','description', 'politician', 'start_kpi', 'rating']
+    fields = ['title','description', 'politician', 'start_kpi', 'rating']    
     success_url = reverse_lazy('index')
 
 
 class PromiseListView(PromiseBaseView, ListView):
-    template_name = 'promise_tracker/index.html'
+    template_name = 'promise/promise_list.html'
     """View to list all pipromise.
     Use the 'promise_list' variable in the template
     to access all Promise objects"""
@@ -119,9 +117,9 @@ class PromiseUpdateView(PromiseBaseView, UpdateView):
 class PromiseDeleteView(PromiseBaseView, DeleteView):
     template_name = 'promise/promise_confirm_delete.html'
     """View to delete a Promise"""    
+#endregion
 
-### Position
-
+# region Position
 class PositionBaseView(View):
     model = Position
     fields = ['name']
@@ -156,10 +154,9 @@ class PositionUpdateView(PositionBaseView, UpdateView):
 class PositionDeleteView(PositionBaseView, DeleteView):
     template_name = 'position/position_confirm_delete.html'
     """View to delete a Position"""
+# endregion
 
-### Parties
-
-
+# region Parties
 class PartyBaseView(View):
     model = Party
     fields = '__all__'
@@ -205,11 +202,14 @@ class PartyUpdateView(PartyBaseView, UpdateView):
 class PartyDeleteView(PartyBaseView, DeleteView):
     template_name = 'party/party_confirm_delete.html'
     """View to delete a Party"""
+# endregion
 
-
+#region Politician
 class PoliticianBaseView(View):
     model = Politician
     fields = ['fname','lname','country','religion', 'education','photo','position']
+    labels = {'fname':'First Name:'}
+    PoliticianPartyFormSet = inlineformset_factory(Politician, PartyValidity, fields=('party', 'ini', 'end'))
     success_url = reverse_lazy('politicians')    
 
 
@@ -232,24 +232,77 @@ class PoliticianCreateView(PoliticianBaseView, CreateView):
     template_name = 'politician/politician_form.html'    
     # def get(request, *args, **kwargs):        
     #     # context = {'context' : formset}
-    def get_context_data(self, **kwargs):
-        OrderFormSet = inlineformset_factory(Politician, PartyValidity, fields=('party', 'ini', 'end'))
-        formset = OrderFormSet(queryset=Politician.objects.none())
+    def get_context_data(self, **kwargs):        
+        formset = self.PoliticianPartyFormSet(queryset=Politician.objects.none())
         context = super().get_context_data(**kwargs)
         context['formset'] = formset        
         return context        
 
-    def form_valid(self, form):
-        print(form)
-        form.instance.creator = self.request.user
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)       
+        politician_validity_form = self.PoliticianPartyFormSet(self.request.POST)
+        if form.is_valid() and politician_validity_form.is_valid():
+            return self.form_valid(form, politician_validity_form)
+        else:
+            return self.form_invalid(form, politician_validity_form)
+    def form_valid(self, form, politician_validity_form):
+        form.instance.creator_id = self.request.user.id        
+        self.object = form.save()                
+
+        # saving Party Validity Instances
+        party_validity = politician_validity_form.save(commit=False)
+        for pv in party_validity:    
+            pv.politician = self.object        
+            pv.save()
+
+        return HttpResponseRedirect(self.get_success_url())
+    def form_invalid(self, form, politician_validity_form):        
+        return self.render_to_response(
+                 self.get_context_data(form=form,
+                                       formset=politician_validity_form
+                                       )
+        )
 
 
 class PoliticianUpdateView(PoliticianBaseView, UpdateView):
     template_name = 'politician/politician_form.html'
     """View to update a Politician"""
+    def get_context_data(self, **kwargs):        
+        self.object = self.get_object()
+        formset = self.PoliticianPartyFormSet(instance=self.object)
+        context = super().get_context_data(**kwargs)
+        context['formset'] = formset        
+        return context 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)       
+        politician_validity_form = self.PoliticianPartyFormSet(self.request.POST, instance=self.object)
+        if form.is_valid() and politician_validity_form.is_valid():
+            return self.form_valid(form, politician_validity_form)
+        else:
+            return self.form_invalid(form, politician_validity_form)
+    def form_valid(self, form, politician_validity_form):
+        # form.instance.creator_id = self.request.user.id        
+        self.object = form.save()                
 
+        # saving Party Validity Instances
+        party_validity = politician_validity_form.save(commit=False)
+        for pv in party_validity:    
+            pv.politician = self.object        
+            pv.save()
+
+        return HttpResponseRedirect(self.get_success_url())
+    def form_invalid(self, form, politician_validity_form):        
+        return self.render_to_response(
+                 self.get_context_data(form=form,
+                                       formset=politician_validity_form
+                                       )
+        )
 
 class PoliticianDeleteView(PoliticianBaseView, DeleteView):
     template_name = 'politician/politician_confirm_delete.html'
     """View to delete a Politician"""
+# Endregion
