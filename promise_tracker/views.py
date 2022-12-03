@@ -86,7 +86,8 @@ def register(request):
 #region Promise
 class PromiseBaseView(View):
     model = Promise
-    fields = ['title','description', 'politician', 'start_kpi', 'rating']    
+    # fields = ['title','description', 'politician', 'start_kpi', 'rating']    
+    form_class = PromisesForm
     success_url = reverse_lazy('index')
 
 
