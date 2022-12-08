@@ -17,6 +17,7 @@ from django.core.paginator import Paginator
 from PIL import Image
 from django.forms import inlineformset_factory
 from promise_tracker.forms import PromisesForm
+from promise_tracker.forms import SourceForm
 
 from .models import Promise, Evidence, Party, Position, Politician, Source, User, PartyValidity, Rating
 
@@ -101,6 +102,41 @@ class PromiseListView(PromiseBaseView, ListView):
 class PromiseCreateView(PromiseBaseView, CreateView):
     template_name = 'promise/promise_form.html'
     """View to create a new promise"""
+    def get_context_data(self, **kwargs):                
+        # source_form = source.get_form_class()
+        formset = SourceForm
+        context = super().get_context_data(**kwargs)
+        context['formset'] = formset        
+        return context        
+
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)       
+        promise_source_form = SourceForm
+        if form.is_valid() and promise_source_form.is_valid():
+            return self.form_valid(form, promise_source_form)
+        else:
+            return self.form_invalid(form, promise_source_form)
+    def form_valid(self, form, promise_source_form):
+        form.instance.creator_id = self.request.user.id        
+        self.object = form.save()                
+
+        # saving Sources Instances
+        source = promise_source_form.save(commit=False)
+        for sc in source:                        
+            sc.save()
+            self.object.fuentes.add(sc)
+
+
+        return HttpResponseRedirect(self.get_success_url())
+    def form_invalid(self, form, promise_source_form):        
+        return self.render_to_response(
+                 self.get_context_data(form=form,
+                                       formset=promise_source_form
+                                       )
+        )
+    
 
 
 class PromiseDetailView(PromiseBaseView, DetailView):

@@ -103,6 +103,9 @@ class Source(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{ self.TYPES_CHOICES[0][int(self.type)] }:: {self.title}"
+
 
 class Promise(models.Model):
     title = models.CharField(max_length=200)
@@ -115,6 +118,9 @@ class Promise(models.Model):
     creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, default=None)
     date = models.DateField(auto_now_add=True)
     status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.title} :: {self.rating.title}" 
 
 
 class Evidence(models.Model):

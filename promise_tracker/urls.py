@@ -9,8 +9,8 @@ from django.contrib.auth.decorators import login_required
 
 # user login patters
 urlpatterns = [
-    # path("", views.index, name="index"),
-    path('', views.PromiseListView.as_view(), name='index'),
+    path("", views.index, name="index"),
+    # path('', views.PromiseListView.as_view(), name='index'),
     path('promises/', views.PromiseListView.as_view(), name='promises'),
     path('promises/<int:pk>/detail', views.PromiseDetailView.as_view(), name='promise_detail'),
     path('promises/create/', login_required(views.PromiseCreateView.as_view()), name='promise_create'),
