@@ -66,6 +66,9 @@ class Politician(models.Model):
 
     def __str__(self):
         return f"{self.fname} {self.lname}"
+    @property
+    def promise_count(self):
+        return self.politician_promises.all().count()
 
 
 class PartyValidity(models.Model):
@@ -96,7 +99,7 @@ class Source(models.Model):
         (VIDEO, 'Video'),
         (PHOTO, 'Foto'),
     ]
-    title = models.CharField(max_length=200)
+    url = models.CharField(max_length=200)
     type = models.CharField(max_length=2,
                             choices=TYPES_CHOICES,
                             default=PHOTO)
@@ -104,7 +107,7 @@ class Source(models.Model):
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{ self.TYPES_CHOICES[0][int(self.type)] }:: {self.title}"
+        return f"{ self.TYPES_CHOICES[0][int(self.url)] }:: {self.title}"
 
 
 class Promise(models.Model):
@@ -114,7 +117,7 @@ class Promise(models.Model):
     rating = models.ForeignKey(
         Rating, related_name="ratings", on_delete=models.CASCADE)
     fuentes = models.ManyToManyField(Source, related_name="promise_sources")
-    politician = models.ForeignKey(Politician, on_delete=models.CASCADE)
+    politician = models.ForeignKey(Politician, related_name="politician_promises", on_delete=models.CASCADE)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, default=None)
     date = models.DateField(auto_now_add=True)
     status = models.BooleanField(default=False)

@@ -31,9 +31,9 @@ class SourceForm(forms.ModelForm):
         (VIDEO, 'Video'),
         (PHOTO, 'Foto'),
     ]
-    title = forms.CharField(label='Title:', max_length=200, widget=forms.TextInput(
+    url = forms.CharField(label='Url:', max_length=200, widget=forms.TextInput(
                               attrs={'class': 'form-control'}))
     type = forms.ChoiceField(label='Type', widget=forms.Select(attrs={'class': 'form-control'}), choices=TYPES_CHOICES)  
     class Meta:
         model = Source
-        fields = ['title', 'type']
+        fields = ['url', 'type']

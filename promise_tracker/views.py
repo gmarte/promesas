@@ -25,9 +25,11 @@ from .models import Promise, Evidence, Party, Position, Politician, Source, User
 def index(request):
     
     promises = Promise.objects.all()
+    politicians = Politician.objects.all()
 
     return render(request, "promise_tracker/index.html", {
         "promises": promises,
+        "politicians": politicians,
     })
 
 # region User
