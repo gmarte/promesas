@@ -34,7 +34,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="me-2">
                                 <div class="display-5 text-white">101.1K</div>
-                                <div class="card-text">Downloads</div>
+                                <div class="card-text">Promises</div>
                             </div>
                             <div class="icon-circle bg-white-50 text-primary"><i class="material-icons">download</i></div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="me-2">
                                 <div class="display-5 text-white">12.2K</div>
-                                <div class="card-text">Purchases</div>
+                                <div class="card-text">Sources</div>
                             </div>
                             <div class="icon-circle bg-white-50 text-warning"><i class="material-icons">storefront</i></div>
                         </div>
@@ -74,7 +74,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="me-2">
                                 <div class="display-5 text-white">5.3K</div>
-                                <div class="card-text">Customers</div>
+                                <div class="card-text">Politicians</div>
                             </div>
                             <div class="icon-circle bg-white-50 text-secondary"><i class="material-icons">people</i></div>
                         </div>
@@ -94,7 +94,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="me-2">
                                 <div class="display-5 text-white">7</div>
-                                <div class="card-text">Channels</div>
+                                <div class="card-text">Parties</div>
                             </div>
                             <div class="icon-circle bg-white-50 text-info"><i class="material-icons">devices</i></div>
                         </div>
@@ -129,21 +129,33 @@
                         <div class="row gx-4">
                             <div class="col-12 col-xxl-2">
                                 <div class="d-flex flex-column flex-md-row flex-xxl-column align-items-center align-items-xl-start justify-content-between">
-                                    <div class="mb-4 text-center text-md-start">
-                                        <div class="text-xs font-monospace text-muted mb-1">Actual Revenue</div>
-                                        <div class="display-5 fw-500">$59,482</div>
-                                    </div>
-                                    <div class="mb-4 text-center text-md-start">
-                                        <div class="text-xs font-monospace text-muted mb-1">Revenue Target</div>
-                                        <div class="display-5 fw-500">$50,000</div>
-                                    </div>
-                                    <div class="mb-4 text-center text-md-start">
-                                        <div class="text-xs font-monospace text-muted mb-1">Goal</div>
-                                        <div class="display-5 fw-500 text-success">119%</div>
-                                    </div>
+                                    <canvas id="dashboardBarChart"></canvas>
                                 </div>
                             </div>
-                            <div class="col-12 col-xxl-10"><canvas id="dashboardBarChart" style="display: block; box-sizing: border-box; width: 559.328px; height: 279px;" width="559" height="279"></canvas></div>
+                            <div class="col-12 col-xxl-10"> YO WHERE IS THE CHART
+                                <script>                                     
+                                    var myChart = new Chart(
+                                        document.getElementById('dashboardBarChart'),
+                                         {
+                                        type: 'bar',
+                                        data: {
+                                            labels: [{% for promise in promises %}  '{{ promise.title }}',  {% endfor %}],
+                                            datasets: [{
+                                                label: '# of Promises',
+                                                data: [{% for promise in promises %}  {{ promise.rating.id }},  {% endfor %}],                                                
+                                                borderWidth: 1
+                                            }]
+                                        },
+                                        options: {
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            }
+                                        }
+                                    });
+                                    </script>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer bg-transparent position-relative ripple-gray mdc-ripple-upgraded">
@@ -247,6 +259,7 @@
                 </table></div><div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 10 of 100 entries</div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"><li class="active"><a href="#" data-page="1">1</a></li><li class=""><a href="#" data-page="2">2</a></li><li class=""><a href="#" data-page="3">3</a></li><li class=""><a href="#" data-page="4">4</a></li><li class=""><a href="#" data-page="5">5</a></li><li class=""><a href="#" data-page="6">6</a></li><li class=""><a href="#" data-page="7">7</a></li><li class="ellipsis"><a href="#">…</a></li><li class=""><a href="#" data-page="10">10</a></li><li class="pager"><a href="#" data-page="2">›</a></li></ul></nav></div></div>
             </div>
         </div>
+        
     <!-- </div>
 </main> -->
 {% endblock %}

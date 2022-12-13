@@ -23,13 +23,11 @@ from .models import Promise, Evidence, Party, Position, Politician, Source, User
 
 
 def index(request):
-    un_filtered = ''
-    paginator = Paginator(un_filtered, 10)  # Show 10 posts per page.
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    
+    promises = Promise.objects.all()
 
     return render(request, "promise_tracker/index.html", {
-        "posts": page_obj,
+        "promises": promises,
     })
 
 # region User
@@ -113,7 +111,7 @@ class PromiseCreateView(PromiseBaseView, CreateView):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)       
-        promise_source_form = SourceForm
+        promise_source_form = SourceForm(self.request.POST)
         if form.is_valid() and promise_source_form.is_valid():
             return self.form_valid(form, promise_source_form)
         else:
@@ -124,9 +122,11 @@ class PromiseCreateView(PromiseBaseView, CreateView):
 
         # saving Sources Instances
         source = promise_source_form.save(commit=False)
-        for sc in source:                        
-            sc.save()
-            self.object.fuentes.add(sc)
+        source.creator = self.request.user
+        source.save()
+        # for sc in source:                        
+        #     sc.save()
+        self.object.fuentes.add(source)
 
 
         return HttpResponseRedirect(self.get_success_url())

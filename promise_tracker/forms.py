@@ -13,7 +13,7 @@ class PromisesForm(forms.ModelForm):
     
     class Meta:
         model = Promise
-        fields = ['title','description', 'fuentes', 'politician', 'start_kpi', 'rating']
+        fields = ['title','description', 'politician', 'start_kpi', 'rating']
         # widget = {
         # 'title': forms.TextInput(attrs={'class':'form-control'}),
         # }
