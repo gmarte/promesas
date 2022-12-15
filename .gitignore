@@ -7,4 +7,4 @@ venv/
 *.pot
 *.pyc
 __pycache__/
-db.sqlite3-journal
+db.sqlite3
