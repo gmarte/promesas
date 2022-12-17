@@ -248,7 +248,7 @@ class PoliticianBaseView(View):
     model = Politician
     fields = ['fname','lname','country','religion', 'education','photo','position']
     labels = {'fname':'First Name:'}
-    PoliticianPartyFormSet = inlineformset_factory(Politician, PartyValidity, fields=('party', 'ini', 'end'))
+    # PoliticianPartyFormSet = inlineformset_factory(Politician, PartyValidity, fields=('party', 'ini', 'end'))
     success_url = reverse_lazy('politicians')    
 
 
@@ -272,36 +272,34 @@ class PoliticianCreateView(PoliticianBaseView, CreateView):
     # def get(request, *args, **kwargs):        
     #     # context = {'context' : formset}
     def get_context_data(self, **kwargs):        
-        formset = self.PoliticianPartyFormSet(queryset=Politician.objects.none())
+        # formset = self.PoliticianPartyFormSet(queryset=Politician.objects.none())
         context = super().get_context_data(**kwargs)
-        context['formset'] = formset        
+        # context['formset'] = formset        
         return context        
 
     def post(self, request, *args, **kwargs):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)       
-        politician_validity_form = self.PoliticianPartyFormSet(self.request.POST)
-        if form.is_valid() and politician_validity_form.is_valid():
-            return self.form_valid(form, politician_validity_form)
+        # politician_validity_form = self.PoliticianPartyFormSet(self.request.POST)
+        if form.is_valid():
+            return self.form_valid(form)
         else:
-            return self.form_invalid(form, politician_validity_form)
-    def form_valid(self, form, politician_validity_form):
+            return self.form_invalid(form)
+    def form_valid(self, form):
         form.instance.creator_id = self.request.user.id        
         self.object = form.save()                
 
         # saving Party Validity Instances
-        party_validity = politician_validity_form.save(commit=False)
-        for pv in party_validity:    
-            pv.politician = self.object        
-            pv.save()
+        # party_validity = politician_validity_form.save(commit=False)
+        # for pv in party_validity:    
+        #     pv.politician = self.object        
+        #     pv.save()
 
         return HttpResponseRedirect(self.get_success_url())
-    def form_invalid(self, form, politician_validity_form):        
+    def form_invalid(self, form):        
         return self.render_to_response(
-                 self.get_context_data(form=form,
-                                       formset=politician_validity_form
-                                       )
+                 self.get_context_data(form=form)
         )
 
 
@@ -310,38 +308,36 @@ class PoliticianUpdateView(PoliticianBaseView, UpdateView):
     """View to update a Politician"""
     def get_context_data(self, **kwargs):        
         self.object = self.get_object()
-        formset = self.PoliticianPartyFormSet(instance=self.object)
+        # formset = self.PoliticianPartyFormSet(instance=self.object)
         context = super().get_context_data(**kwargs)
-        context['formset'] = formset        
+        # context['formset'] = formset        
         return context 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         form_class = self.get_form_class()
         form = self.get_form(form_class)       
-        politician_validity_form = self.PoliticianPartyFormSet(self.request.POST, instance=self.object)
-        if form.is_valid() and politician_validity_form.is_valid():
-            return self.form_valid(form, politician_validity_form)
+        # politician_validity_form = self.PoliticianPartyFormSet(self.request.POST, instance=self.object)
+        if form.is_valid():
+            return self.form_valid(form)
         else:
-            return self.form_invalid(form, politician_validity_form)
-    def form_valid(self, form, politician_validity_form):
+            return self.form_invalid(form)
+    def form_valid(self, form):
         # form.instance.creator_id = self.request.user.id        
         self.object = form.save()                
 
         # saving Party Validity Instances
-        party_validity = politician_validity_form.save(commit=False)
-        for pv in party_validity:    
-            pv.politician = self.object        
-            pv.save()
+        # party_validity = politician_validity_form.save(commit=False)
+        # for pv in party_validity:    
+        #     pv.politician = self.object        
+        #     pv.save()
 
         return HttpResponseRedirect(self.get_success_url())
     def form_invalid(self, form, politician_validity_form):        
         return self.render_to_response(
-                 self.get_context_data(form=form,
-                                       formset=politician_validity_form
-                                       )
+                 self.get_context_data(form=form)
         )
 
 class PoliticianDeleteView(PoliticianBaseView, DeleteView):
     template_name = 'politician/politician_confirm_delete.html'
     """View to delete a Politician"""
-# Endregion
+# endregion

@@ -9,9 +9,23 @@ from django.utils import timezone
 # from numpy import blackman
 from django_countries.fields import CountryField
 
+class BaseModel(models.Model):
+    created = models.DateTimeField(default=timezone.now)
+    updated = models.DateTimeField(auto_now=True)
+ 
+    class Meta:
+        abstract = True
 
-class User(AbstractUser):
-    pass
+class User(AbstractUser, BaseModel):
+    is_anonymous = models.BooleanField(default=True)
+    def __str__(self):
+        return self.username
+    @property
+    def get_user(self):
+        if self.is_anonymous:
+            return "anonymous"
+        else:
+            return self.username
 
 
 class Position(models.Model):
@@ -49,8 +63,7 @@ class Politician(models.Model):
     ]
     fname = models.CharField(max_length=64)
     lname = models.CharField(max_length=64)
-    party = models.ManyToManyField(
-        Party, through='PartyValidity', related_name='parties')
+    party = models.ForeignKey(Party, on_delete=models.CASCADE, related_name='parties', null=True)
     country = CountryField()
     religion = models.CharField(max_length=64, blank=True)
     position = models.ForeignKey(
@@ -86,7 +99,7 @@ class Rating(models.Model):
     order = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"{self.title}: {self.description}"
+        return f"{self.title}"
     class Meta:
         ordering = ['order']
 
@@ -107,7 +120,7 @@ class Source(models.Model):
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{ self.TYPES_CHOICES[0][int(self.url)] }:: {self.title}"
+        return f"{ self.TYPES_CHOICES[0][int(self.type)] }:: {self.url}"
 
 
 class Promise(models.Model):
