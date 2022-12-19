@@ -1,11 +1,18 @@
-
+## CBV
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-import json
-from django.http import JsonResponse
+## Viewsets / REST Framework
+from promise_tracker.serializers import PromiseSerializer
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.decorators import action
+#from django.http import JsonResponse
+#import json
+
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
@@ -13,7 +20,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from django.core.paginator import Paginator
+#from django.core.paginator import Paginator
 from PIL import Image
 from django.forms import inlineformset_factory
 from promise_tracker.forms import PromisesForm
@@ -26,10 +33,11 @@ def index(request):
     
     promises = Promise.objects.all()
     politicians = Politician.objects.all()
-
+   
     return render(request, "promise_tracker/index.html", {
         "promises": promises,
         "politicians": politicians,
+        'segment': 'index'
     })
 
 # region User
@@ -138,9 +146,6 @@ class PromiseCreateView(PromiseBaseView, CreateView):
                                        formset=promise_source_form
                                        )
         )
-    
-
-
 class PromiseDetailView(PromiseBaseView, DetailView):
     template_name = 'promise/promise_detail.html'
     
@@ -156,6 +161,31 @@ class PromiseUpdateView(PromiseBaseView, UpdateView):
 class PromiseDeleteView(PromiseBaseView, DeleteView):
     template_name = 'promise/promise_confirm_delete.html'
     """View to delete a Promise"""    
+class PromiseViewSet(viewsets.ModelViewSet):
+    http_method_names = ['get']
+    queryset = Promise.objects.all()
+    serializer_class = PromiseSerializer
+
+    @action(detail=False, methods=['get'], url_path='party')
+    def promises_parties(self, request, *args, **kwargs):
+        data = []
+        parties = Party.objects.all()
+        for p in parties:
+            data.append(
+                {
+                    'party': p.acronym,
+                    'count': Promise.objects.filter(politician__party=p).count()
+                }
+            )
+        return Response(data, status=status.HTTP_200_OK)
+    @action(detail=False, methods=['get'], url_path='politician')
+    def promises_politician(self, request, *args, **kwargs):
+        data = []
+        politician = Politician.objects.all()
+        return Response(data, status=status.HTTP_200_OK)
+
+
+
 #endregion
 
 # region Position

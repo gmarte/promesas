@@ -8,7 +8,7 @@
         <div class="row justify-content-between align-items-center mb-5">
             <div class="col flex-shrink-0 mb-5 mb-md-0">
                 <h1 class="display-4 mb-0">Dashboard</h1>
-                <div class="text-muted">Sales overview &amp; summary</div>
+                <div class="text-muted">Promises overview &amp; summary</div>
             </div>
             <div class="col-12 col-md-auto">
                 <div class="d-flex flex-column flex-sm-row gap-3">
@@ -127,12 +127,12 @@
                     </div>
                     <div class="card-body p-4">
                         <div class="row gx-4">
-                            <div class="col-12 col-xxl-2">
+                            <div class="col-12 col-xxl-10">
                                 <div class="d-flex flex-column flex-md-row flex-xxl-column align-items-center align-items-xl-start justify-content-between">
                                     <canvas id="dashboardBarChart"></canvas>
                                 </div>
                             </div>
-                            <div class="col-12 col-xxl-10">
+                            <!-- <div class="col-12 col-xxl-10"> -->
                                 <script>                                     
                                     var myChart = new Chart(
                                         document.getElementById('dashboardBarChart'),
@@ -155,7 +155,7 @@
                                         }
                                     });
                                     </script>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                     <div class="card-footer bg-transparent position-relative ripple-gray mdc-ripple-upgraded">
@@ -166,13 +166,13 @@
                     </div>
                 </div>
             </div>
-            <!-- Segments pie chart example-->
+            <!-- Policitian pie chart example-->
             <div class="col-lg-4 mb-5">
                 <div class="card card-raised h-100">
                     <div class="card-header bg-primary text-white px-4">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-4">
-                                <h2 class="card-title text-white mb-0">Segments</h2>
+                                <h2 class="card-title text-white mb-0">Politician</h2>
                                 <div class="card-subtitle">Revenue sources</div>
                             </div>
                             <div class="dropdown">
@@ -190,7 +190,9 @@
                     </div>
                     <div class="card-body p-4">
                         <div class="d-flex h-100 w-100 align-items-center justify-content-center">
-                            <div class="w-100" style="max-width: 20rem"><canvas id="myPieChart" style="display: block; box-sizing: border-box; width: 235.656px; height: 235px;" width="235" height="235"></canvas></div>
+                            <div class="w-100" style="max-width: 20rem">
+                                <canvas id="myPieChart" style="display: block; box-sizing: border-box; width: 235.656px; height: 235px;" width="235" height="235"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer bg-transparent position-relative ripple-gray mdc-ripple-upgraded">
@@ -249,14 +251,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body p-4">
-                <!-- Simple DataTables example-->
-                <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"><label><select class="dataTable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div><div class="dataTable-container"><table id="datatablesSimple" class="dataTable-table">
-                    <thead>
-                        <tr><th data-sortable="" style="width: 26.644%;"><a href="#" class="dataTable-sorter">Name</a></th><th data-sortable="" style="width: 11.1111%;"><a href="#" class="dataTable-sorter">Ext.</a></th><th data-sortable="" style="width: 25.3968%;"><a href="#" class="dataTable-sorter">City</a></th><th data-type="date" data-format="YYYY/MM/DD" data-sortable="" style="width: 18.5941%;"><a href="#" class="dataTable-sorter">Start Date</a></th><th data-sortable="" style="width: 18.254%;"><a href="#" class="dataTable-sorter">Completion</a></th></tr>
-                    </thead>
-                    <tbody><tr><td>Unity Pugh</td><td>9958</td><td>Curicó</td><td>2005/02/11</td><td>37%</td></tr><tr><td>Theodore Duran</td><td>8971</td><td>Dhanbad</td><td>1999/04/07</td><td>97%</td></tr><tr><td>Kylie Bishop</td><td>3147</td><td>Norman</td><td>2005/09/08</td><td>63%</td></tr><tr><td>Willow Gilliam</td><td>3497</td><td>Amqui</td><td>2009/29/11</td><td>30%</td></tr><tr><td>Blossom Dickerson</td><td>5018</td><td>Kempten</td><td>2006/11/09</td><td>17%</td></tr><tr><td>Elliott Snyder</td><td>3925</td><td>Enines</td><td>2006/03/08</td><td>57%</td></tr><tr><td>Castor Pugh</td><td>9488</td><td>Neath</td><td>2014/23/12</td><td>93%</td></tr><tr><td>Pearl Carlson</td><td>6231</td><td>Cobourg</td><td>2014/31/08</td><td>100%</td></tr><tr><td>Deirdre Bridges</td><td>1579</td><td>Eberswalde-Finow</td><td>2014/26/08</td><td>44%</td></tr><tr><td>Daniel Baldwin</td><td>6095</td><td>Moircy</td><td>2000/11/01</td><td>33%</td></tr></tbody>
-                </table></div><div class="dataTable-bottom"><div class="dataTable-info">Showing 1 to 10 of 100 entries</div><nav class="dataTable-pagination"><ul class="dataTable-pagination-list"><li class="active"><a href="#" data-page="1">1</a></li><li class=""><a href="#" data-page="2">2</a></li><li class=""><a href="#" data-page="3">3</a></li><li class=""><a href="#" data-page="4">4</a></li><li class=""><a href="#" data-page="5">5</a></li><li class=""><a href="#" data-page="6">6</a></li><li class=""><a href="#" data-page="7">7</a></li><li class="ellipsis"><a href="#">…</a></li><li class=""><a href="#" data-page="10">10</a></li><li class="pager"><a href="#" data-page="2">›</a></li></ul></nav></div></div>
+            <div class="card-body p-4 ">
+                <div class="mx-auto">
+                    <!-- Simple DataTables example-->
+                    <canvas id="promise-party"></canvas>                
+                </div>
             </div>
         </div>
         

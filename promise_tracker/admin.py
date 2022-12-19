@@ -13,9 +13,8 @@ class PoliticianResource(resources.ModelResource):
         model = Politician
 class PoliticianAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     resource_classes = [PoliticianResource]
-    # inlines = [PartyValidityInline]
-    class Meta:
-        model = Politician
+    # inlines = [PartyValidityInline]    
+    list_filter = ('party',)
 
 class PromiseResource(resources.ModelResource):
     class Meta:
@@ -24,7 +23,8 @@ class PromiseAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     resource_classes = [PromiseResource]
     # inlines = [PartyValidityInline]
     class Meta:
-        model = Promise        
+        model = Promise  
+    list_filter = ('politician','rating')
 
 class UserResource(resources.ModelResource):
     class Meta:

@@ -1,5 +1,5 @@
 
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 from django.conf import settings
@@ -38,5 +38,7 @@ urlpatterns = [
     path('politicians/create/',login_required(views.PoliticianCreateView.as_view()), name='politician_create'),
     path('politicians/<int:pk>/update/',login_required(views.PoliticianUpdateView.as_view()), name='politician_update'),
     path('politicians/<int:pk>/delete/',login_required(views.PoliticianDeleteView.as_view()), name='politician_delete'),     
+    # API
+    path("api/", include(("promise_tracker.routers", "api"), namespace="api")),    
 ]+ static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
