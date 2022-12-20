@@ -173,6 +173,7 @@ class PromiseViewSet(viewsets.ModelViewSet):
         for p in parties:
             data.append(
                 {
+                    'id': p.id,
                     'party': p.acronym,
                     'count': Promise.objects.filter(politician__party=p).count()
                 }
@@ -182,6 +183,16 @@ class PromiseViewSet(viewsets.ModelViewSet):
     def promises_politician(self, request, *args, **kwargs):
         data = []
         politician = Politician.objects.all()
+        for p in politician:
+            if p.promise_count > 0:
+                data.append(
+                    {
+                        'id' : p.id,
+                        'party': p.party.acronym,
+                        'name': p.fname + ' ' + p.lname,                    
+                        'count': p.promise_count
+                    }
+                )
         return Response(data, status=status.HTTP_200_OK)
 
 
