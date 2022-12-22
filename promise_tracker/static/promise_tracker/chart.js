@@ -3,13 +3,7 @@ promiseParty.then((response) => {
         labels: response.map((data) => data.party),
         datasets: [{
             label: 'Parties',
-            data: response.map((data) => data.count),
-            // backgroundColor: [
-            //     'rgb(255, 99, 132)',
-            //     'rgb(54, 162, 235)',
-            //     'rgb(255, 205, 86)'
-            // ],
-            // hoverOffset: 4
+            data: response.map((data) => data.count),            
         }]
     };
 
@@ -34,3 +28,71 @@ promiseParty.then((response) => {
         configPromiseParty
     );
 });
+
+promisePolitician.then((response) => {
+    const dataPromisePolitician = {
+        labels: response.map((data) => data.name),
+        datasets: [{
+            label: 'Promises by Politician',
+            data: response.map((data) => data.count),            
+            hoverOffset: 4
+        }]
+    };
+
+    const configPromisePolitician = {
+        type: 'bar',        
+        data: dataPromisePolitician,        
+    };
+
+    new Chart(
+        document.getElementById('dashboardBarChart'),
+        configPromisePolitician
+    );
+});
+
+ratingPolitician.then((response) => {
+    ratings =  response.ratings;
+    // document.querySelector('#profile_pic').src = response.photo;
+    document.querySelector('#politician_name').innerHTML = response.fname + ' ' +response.lname;
+    const dataRatingPolitician = {
+        labels: ratings.map((x) => x.title ),
+        datasets: [{
+            label: response.fname + ' ' +response.lname,
+            data: ratings.map((x) => x.count ),
+        }]
+    };
+
+    const configRatingPolitician = {
+        type: 'pie',
+        data: dataRatingPolitician,        
+    };
+
+    let myPiePolitician = new Chart(
+        document.getElementById('dashboardPiePolitician'),
+        configRatingPolitician
+    );
+});
+
+ratingParty.then((response) => {
+    ratings =  response.ratings;
+    // document.querySelector('#profile_pic').src = response.photo;
+    document.querySelector('#party_name').innerHTML = response.name;
+    const dataRatingParty = {
+        labels: ratings.map((x) => x.title ),
+        datasets: [{
+            label: response.acronym,
+            data: ratings.map((x) => x.count ),
+        }]
+    };
+
+    const configRatingParty = {
+        type: 'pie',
+        data: dataRatingParty,        
+    };
+
+    let myPieParty = new Chart(
+        document.getElementById('dashboardPieParty'),
+        configRatingParty
+    );
+});
+
