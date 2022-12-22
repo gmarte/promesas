@@ -1,0 +1,34 @@
+id,fname,lname,party,country,religion,position,creator,education,photo,status
+38,Federico,Antún Batlle,4,DO,Catolico,6,1,03,,1
+37,Valentin,Medrano,3,DO,Catolico,4,5,01,,1
+36,Jose Manuel,del Castillo,3,DO,Catolico,4,9,02,,1
+35,Aris,Lorenzo,3,DO,Catolico,4,1,01,,1
+34,Franklin,Isaias,6,DO,Catolico,4,27,1,,1
+33,Jose,Antonio,6,DO,Catolico,4,123,1,,0
+32,David,Rafael,6,DO,Catolico,4,81,1,,1
+31,Felix,Bautista,6,DO,Catolico,4,63,1,,0
+30,Bautista,Rojas,6,DO,Catolico,4,143,1,,0
+29,Virgilio,Cedano,6,DO,Catolico,4,152,1,,1
+28,Franklin,Alberto,6,DO,Catolico,4,143,1,,1
+27,Dionis,Alfonso,6,DO,Catolico,4,175,1,,1
+26,Carlos,Gomez,1,DO,Catolico,4,12,1,,1
+25,Santiago,Jose,1,DO,Catolico,4,106,1,,0
+24,Alexis,Victoria,1,DO,Catolico,4,102,1,,1
+23,Lenin,Valdez,1,DO,Catolico,4,16,1,,1
+22,Antonio,Taveras,1,DO,Catolico,4,37,1,,0
+21,Ivan,Silva,1,DO,Catolico,4,194,1,,0
+20,Franklin,Romero,1,DO,Catolico,4,46,1,,1
+19,Ramon,Pimentel,1,DO,Catolico,4,80,1,,0
+18,Martin,Nolasco,1,DO,Catolico,4,81,1,,0
+17,Melania,Salvador,1,DO,Catolico,4,66,1,,0
+16,Milciades,Franjul,1,DO,Catolico,4,83,1,,1
+15,Ricardo,De,1,DO,Catolico,4,89,1,,0
+14,Lia,Ynocencia,1,DO,Catolico,4,180,1,,1
+13,Cristobal,Castillo,1,DO,Catolico,4,18,1,,0
+12,Pedro,Manuel,1,DO,Catolico,4,67,1,,1
+11,Ginnette,Altagracia,1,DO,Catolico,4,156,1,,1
+10,Hector,Acosta,1,DO,Catolico,4,101,1,,0
+9,Faride Raful,Raful,1,DO,Catolico,4,1,4,,0
+8,Giancarlo,Marte Reyes,1,DO,Catolico,2,1,1,,1
+3,Fernando,Rodriguez,1,DO,Protestante,2,1,2,politician/WIN_20220620_12_24_10_Pro.jpg,1
+1,Luis,Abinader,1,DO,Catolico,3,1,01,politician/luis_abinader.jpg,1
