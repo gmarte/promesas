@@ -12,4 +12,5 @@ class PromiseSerializer(serializers.ModelSerializer):
         fields = ('title','description', 'start_kpi', 'rating', 'politician', 'creator', 'date', 'status')
 class PoliticianSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Politician        
+        model = Politician    
+        fields = '__all__'

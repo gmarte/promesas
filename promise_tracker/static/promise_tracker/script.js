@@ -75,4 +75,8 @@ window.addEventListener('DOMContentLoaded', event => {
         }
         targetAnchor.classList.add('active');
     });
+    // const datatablesSimple = document.getElementById('datatablesSimple');
+    // if (datatablesSimple) {
+    //     new simpleDatatables.DataTable(datatablesSimple);
+    // }    
 });

@@ -8,22 +8,7 @@
         <div class="row justify-content-between align-items-center mb-5">
             <div class="col flex-shrink-0 mb-5 mb-md-0">
                 <h1 class="display-4 mb-0">Dashboard</h1>
-                <div class="text-muted">Promises overview &amp; summary</div>
-            </div>
-            <div class="col-12 col-md-auto">
-                <div class="d-flex flex-column flex-sm-row gap-3">
-                    <mwc-select class="mw-50 mb-2 mb-md-0" outlined="" label="View by">
-                        <mwc-list-item selected="" value="0" mwc-list-item="" tabindex="0" aria-disabled="false" role="option" aria-selected="true">Party</mwc-list-item>
-                        <mwc-list-item value="1" mwc-list-item="" tabindex="-1" aria-disabled="false" role="option">Politician</mwc-list-item>
-                        <mwc-list-item value="2" mwc-list-item="" tabindex="-1" aria-disabled="false" role="option">Customer</mwc-list-item>
-                    </mwc-select>
-                    <mwc-select class="mw-50" outlined="" label="Sales from">
-                        <mwc-list-item value="0" mwc-list-item="" tabindex="0" aria-disabled="false" role="option">Last 7 days</mwc-list-item>
-                        <mwc-list-item value="1" mwc-list-item="" tabindex="-1" aria-disabled="false" role="option">Last 30 days</mwc-list-item>
-                        <mwc-list-item value="2" mwc-list-item="" tabindex="-1" aria-disabled="false" role="option">Last month</mwc-list-item>
-                        <mwc-list-item selected="" value="3" mwc-list-item="" tabindex="-1" aria-disabled="false" role="option" aria-selected="true">Last year</mwc-list-item>
-                    </mwc-select>
-                </div>
+                <div class="text-muted">Promises overview &amp; summary of lies to get into power</div>
             </div>
         </div>
         <!-- Colored status cards-->
@@ -36,7 +21,7 @@
                                 <div class="display-5 text-white">101.1K</div>
                                 <div class="card-text">Promises</div>
                             </div>
-                            <div class="icon-circle bg-white-50 text-primary"><i class="material-icons">download</i></div>
+                            <div class="icon-circle bg-white-50 text-primary"><i class="material-icons">visibility_off</i></div>
                         </div>
                         <div class="card-text">
                             <div class="d-inline-flex align-items-center">
@@ -56,7 +41,7 @@
                                 <div class="display-5 text-white">12.2K</div>
                                 <div class="card-text">Evidences</div>
                             </div>
-                            <div class="icon-circle bg-white-50 text-warning"><i class="material-icons">storefront</i></div>
+                            <div class="icon-circle bg-white-50 text-warning"><i class="material-icons">balance</i></div>
                         </div>
                         <div class="card-text">
                             <div class="d-inline-flex align-items-center">
@@ -96,7 +81,7 @@
                                 <div class="display-5 text-white">7</div>
                                 <div class="card-text">Parties</div>
                             </div>
-                            <div class="icon-circle bg-white-50 text-info"><i class="material-icons">devices</i></div>
+                            <div class="icon-circle bg-white-50 text-info"><i class="material-icons">diversity_3</i></div>
                         </div>
                         <div class="card-text">
                             <div class="d-inline-flex align-items-center">
@@ -117,53 +102,23 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-4">
                                 <h2 class="card-title text-white mb-0">Politicians</h2>
-                                <div class="card-subtitle">Compared to previous year</div>
+                                <div class="card-subtitle">Promises by politician</div>
                             </div>
-                            <div class="d-flex gap-2 me-n2">
+                            <!-- <div class="d-flex gap-2 me-n2">
                                 <button class="btn btn-lg btn-text-white btn-icon mdc-ripple-upgraded" type="button"><i class="material-icons">download</i></button>
                                 <button class="btn btn-lg btn-text-white btn-icon mdc-ripple-upgraded" type="button"><i class="material-icons">print</i></button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="card-body p-4">
                         <div class="row gx-4">
                             <div class="col-12 col-xxl-10">
                                 <div class="d-flex flex-column flex-md-row flex-xxl-column align-items-center align-items-xl-start justify-content-between">
-                                    <canvas id="dashboardBarChart"></canvas>
+                                    <canvas id="dashboardBarChart" style="display: block; box-sizing: border-box; width: 559.328px; height: 279px;" width="559" height="279"></canvas>
                                 </div>
-                            </div>
-                            <!-- <div class="col-12 col-xxl-10"> -->
-                                <script>                                     
-                                    var myChart = new Chart(
-                                        document.getElementById('dashboardBarChart'),
-                                         {
-                                        type: 'bar',
-                                        data: {
-                                            labels: [{% for politician in politicians %}  '{{ politician }}',  {% endfor %}],
-                                            datasets: [{
-                                                label: '# of Promises',
-                                                data: [{% for politician in politicians %}  {{ politician.promise_count }},  {% endfor %}],                                                
-                                                borderWidth: 1
-                                            }]
-                                        },
-                                        options: {
-                                            scales: {
-                                                y: {
-                                                    beginAtZero: true
-                                                }
-                                            }
-                                        }
-                                    });
-                                    </script>
-                            <!-- </div> -->
+                            </div>                          
                         </div>
-                    </div>
-                    <div class="card-footer bg-transparent position-relative ripple-gray mdc-ripple-upgraded">
-                        <a class="d-flex align-items-center justify-content-end text-decoration-none stretched-link text-primary" href="#!">
-                            <div class="fst-button">Open Report</div>
-                            <i class="material-icons icon-sm ms-1">chevron_right</i>
-                        </a>
-                    </div>
+                    </div>                    
                 </div>
             </div>
             <!-- Policitian pie chart example-->
@@ -175,17 +130,6 @@
                                 <h2 class="card-title text-white mb-0">Parties</h2>
                                 <div class="card-subtitle">Promises by parties</div>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn btn-lg btn-text-light btn-icon me-n2 dropdown-toggle mdc-ripple-upgraded" id="segmentsDropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></button>
-                                <ul class="dropdown-menu" aria-labelledby="segmentsDropdownButton">
-                                    <li><a class="dropdown-item mdc-ripple-upgraded" href="#!">Action</a></li>
-                                    <li><a class="dropdown-item mdc-ripple-upgraded" href="#!">Another action</a></li>
-                                    <li><a class="dropdown-item mdc-ripple-upgraded" href="#!">Something else here</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item mdc-ripple-upgraded" href="#!">Separated link</a></li>
-                                    <li><a class="dropdown-item mdc-ripple-upgraded" href="#!">Separated link</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body p-4">
@@ -194,71 +138,76 @@
                                 <canvas id="myPieChart" style="display: block; box-sizing: border-box; width: 235.656px; height: 235px;" width="235" height="235"></canvas>
                             </div>
                         </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>     
+        <div class="row gx-5">
+            <div class="col-xl-6 mb-5">
+                <div class="card card-raised h-100">
+                    <div class="card-header bg-primary text-white px-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="me-4">
+                                <h2 class="card-title text-white mb-0">Politician Promises</h2>
+                                <div class="card-subtitle">Status</div>                                
+                            </div>                            
+                            <div class="dropdown">
+                                <button class="btn btn-lg btn-text-light btn-icon me-n2 dropdown-toggle mdc-ripple-upgraded" id="segmentsDropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:2.78151; --mdc-ripple-fg-translate-start:12.0156px, 4px; --mdc-ripple-fg-translate-end:10px, 10px;"><i class="material-icons">more_vert</i></button>
+                                <ul class="dropdown-menu" aria-labelledby="segmentsDropdownButton" >
+                                    {% for politician in politicians %}
+                                        {% if politician.promise_count >= 1 %}
+                                            <li><a class="dropdown-item mdc-ripple-upgraded" data-id="{{politician.id}}" onclick="change_ratingp({{politician.id}})" href="#!">{{politician}}</a></li>     
+                                        {% endif %}
+                                    {% endfor %}                               
+                                </ul>
+                            </div>                                     
+                        </div>                        
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row gx-4">                                    
+                            <div class="col-12 col-xxl-10"><canvas id="dashboardPiePolitician" style="display: block; box-sizing: border-box;"></canvas></div>
+                        </div>
                     </div>
                     <div class="card-footer bg-transparent position-relative ripple-gray mdc-ripple-upgraded">
+                        <!-- <img id="profile_pic" src="" style="width: 90px; height: 90px;" class="rounded-circle float-right" /> -->
                         <a class="d-flex align-items-center justify-content-end text-decoration-none stretched-link text-primary" href="#!">
-                            <div class="fst-button">Open Report</div>
+                            <div class="fst-button" id="politician_name"></div>
                             <i class="material-icons icon-sm ms-1">chevron_right</i>
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row gx-5">
-            <!-- Privacy suggestions illustrated card-->
             <div class="col-xl-6 mb-5">
                 <div class="card card-raised h-100">
-                    <div class="card-body p-4">
-                        <div class="d-flex justify-content-between">
+                    <div class="card-header bg-primary text-white px-4">
+                        <div class="d-flex justify-content-between align-items-center">
                             <div class="me-4">
-                                <h2 class="card-title mb-0">Privacy Suggestions</h2>
-                                <p class="card-text">Take our privacy checkup to choose which settings are right for you.</p>
+                                <h2 class="card-title text-white mb-0">Party Promises</h2>
+                                <div class="card-subtitle">Promise status</div>                                
                             </div>
-                            <img src="assets/img/illustrations/security.svg" alt="..." style="height: 6rem">
+                            <div class="dropdown">
+                                <button class="btn btn-lg btn-text-light btn-icon me-n2 dropdown-toggle mdc-ripple-upgraded" id="segmentsDropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="--mdc-ripple-fg-size:28px; --mdc-ripple-fg-scale:2.78151; --mdc-ripple-fg-translate-start:12.0156px, 4px; --mdc-ripple-fg-translate-end:10px, 10px;"><i class="material-icons">more_vert</i></button>
+                                <ul class="dropdown-menu" aria-labelledby="segmentsDropdownButton" >
+                                    {% for p in parties %}
+                                    <li><a class="dropdown-item mdc-ripple-upgraded" data-id="{{p.id}}" onclick="change_rating({{p.id}})" href="#!">{{p.name}}</a></li>     
+                                    {% endfor %}                               
+                                </ul>
+                            </div>                                                                                           
+                        </div>                        
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row gx-4">                                    
+                            <div class="col-12 col-xxl-10"><canvas id="dashboardPieParty" style="display: block; box-sizing: border-box;"></canvas></div>
                         </div>
                     </div>
-                    <div class="card-footer bg-transparent position-relative ripple-gray px-4 mdc-ripple-upgraded"><a class="stretched-link text-decoration-none" href="#!">Review suggestions (4)</a></div>
-                </div>
-            </div>
-            <!-- Account storage illustrated card-->
-            <div class="col-xl-6 mb-5">
-                <div class="card card-raised h-100">
-                    <div class="card-body p-4">
-                        <div class="d-flex justify-content-between">
-                            <div class="me-4">
-                                <h2 class="card-title mb-0">Account Storage</h2>
-                                <p class="card-text">Your account storage is shared across all devices.</p>
-                                <div class="progress mb-2" style="height: 0.25rem"><div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="30"></div></div>
-                                <div class="card-text">10 GB of 30 GB used</div>
-                            </div>
-                            <img src="assets/img/illustrations/cloud.svg" alt="..." style="height: 6rem">
-                        </div>
+                    <div class="card-footer bg-transparent position-relative ripple-gray mdc-ripple-upgraded">
+                        <!-- <img id="profile_pic" src="" style="width: 90px; height: 90px;" class="rounded-circle float-right" /> -->
+                        <a class="d-flex align-items-center justify-content-end text-decoration-none stretched-link text-primary" href="#!">
+                            <div class="fst-button" id="party_name"></div>
+                            <i class="material-icons icon-sm ms-1">chevron_right</i>
+                        </a>
                     </div>
-                    <div class="card-footer bg-transparent position-relative ripple-gray px-4 mdc-ripple-upgraded"><a class="stretched-link text-decoration-none" href="#!">Manage storage</a></div>
-                </div>
+                </div>                
             </div>
-        </div>
-        <div class="card card-raised">
-            <div class="card-header bg-primary text-white px-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="me-4">
-                        <h2 class="card-title text-white mb-0">Orders</h2>
-                        <div class="card-subtitle">Details and history</div>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-lg btn-text-white btn-icon mdc-ripple-upgraded" type="button"><i class="material-icons">download</i></button>
-                        <button class="btn btn-lg btn-text-white btn-icon mdc-ripple-upgraded" type="button"><i class="material-icons">print</i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body p-4 ">
-                <div class="mx-auto">
-                    <!-- Simple DataTables example-->
-                    <canvas id="promise-party"></canvas>                
-                </div>
-            </div>
-        </div>
-        
-    <!-- </div>
-</main> -->
+        </div>                
 {% endblock %}

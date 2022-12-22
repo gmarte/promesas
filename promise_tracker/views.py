@@ -5,11 +5,13 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 ## Viewsets / REST Framework
-from promise_tracker.serializers import PromiseSerializer
+from promise_tracker.serializers import PromiseSerializer, PartySerializer, PoliticianSerializer
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import action
+from django.db.models import Count
+from django.db.models import Q
 #from django.http import JsonResponse
 #import json
 
@@ -33,11 +35,13 @@ def index(request):
     
     promises = Promise.objects.all()
     politicians = Politician.objects.all()
+    parties = Party.objects.all()
    
     return render(request, "promise_tracker/index.html", {
         "promises": promises,
         "politicians": politicians,
-        'segment': 'index'
+        "parties": parties,
+        "segment": 'index'
     })
 
 # region User
@@ -169,31 +173,71 @@ class PromiseViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'], url_path='party')
     def promises_parties(self, request, *args, **kwargs):
         data = []
-        parties = Party.objects.all()
-        for p in parties:
-            data.append(
-                {
-                    'id': p.id,
-                    'party': p.acronym,
-                    'count': Promise.objects.filter(politician__party=p).count()
-                }
-            )
-        return Response(data, status=status.HTTP_200_OK)
+        datap = {}
+        ratings = []                
+        partyId = request.query_params.get('id')
+        if not partyId:        
+            parties = Party.objects.all()
+            for p in parties:
+                data.append(
+                    {
+                        'id': p.id,
+                        'party': p.acronym,
+                        'count': Promise.objects.filter(politician__party=p).count()
+                    }
+                )
+            return Response(data, status=status.HTTP_200_OK)
+        else:
+            singleParty = Party.objects.get(pk=partyId)
+            party_serialize = PartySerializer(singleParty)
+            # Transaction.objects.all().values('actor').annotate(total=Count('actor')).order_by('total')
+            rating_by_party = Count('ratings', filter=Q(ratings__politician__party = singleParty))
+            ratingsParty = Rating.objects.annotate(number_of_ratings = rating_by_party)            
+            datap = party_serialize.data
+            for r in ratingsParty:
+                ratings.append(
+                    {
+                        'title': r.title,
+                        'count': r.number_of_ratings
+                    }
+                )
+            datap["ratings"] = ratings
+            return Response(datap, status=status.HTTP_200_OK)
+        # return Response(data, status=status.HTTP_200_OK)
     @action(detail=False, methods=['get'], url_path='politician')
     def promises_politician(self, request, *args, **kwargs):
         data = []
-        politician = Politician.objects.all()
-        for p in politician:
-            if p.promise_count > 0:
-                data.append(
+        datap = {}
+        ratings = [] 
+        politicianId = request.query_params.get('id')
+        if not politicianId:
+            politician = Politician.objects.all()        
+            for p in politician:
+                if p.promise_count > 0:
+                    data.append(
+                        {
+                            'id' : p.id,
+                            'party': p.party.acronym,
+                            'name': p.fname + ' ' + p.lname,                    
+                            'count': p.promise_count
+                        }
+                    )
+            return Response(data, status=status.HTTP_200_OK)
+        else:
+            singlePolitician = Politician.objects.get(pk=politicianId)
+            politician_serialize = PoliticianSerializer(singlePolitician)
+            rating_by_politican = Count('ratings', filter=Q(ratings__politician = singlePolitician))
+            ratingsPolitician = Rating.objects.annotate(number_of_ratings = rating_by_politican)            
+            datap = politician_serialize.data
+            for r in ratingsPolitician:
+                ratings.append(
                     {
-                        'id' : p.id,
-                        'party': p.party.acronym,
-                        'name': p.fname + ' ' + p.lname,                    
-                        'count': p.promise_count
+                        'title': r.title,
+                        'count': r.number_of_ratings
                     }
                 )
-        return Response(data, status=status.HTTP_200_OK)
+            datap["ratings"] = ratings
+            return Response(datap, status=status.HTTP_200_OK)
 
 
 
