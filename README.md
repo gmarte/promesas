@@ -25,6 +25,17 @@ Another reason why politicians may make false promises is because they may not f
 
 Ultimately, it is important for voters to hold politicians accountable for their promises. This can be done by actively participating in the political process, researching candidates and their stances on issues, and holding politicians accountable through the voting process. It is also important for politicians to be transparent and honest with voters about their motivations and what they can realistically achieve.
 
+Design for a web system to keep politicians accountable for their promises:
+The system would have a database of promises made by politicians. These promises could be entered manually by users or could be automatically collected from public statements made by politicians.
+Each promise would have a status indicating whether it has been fulfilled, is in progress, or has not yet been started.
+Users of the system would be able to search for promises by politician, by keyword, or by status.
+The system would provide a way for users to report on the progress of a promise, such as by providing updates or evidence of fulfillment.
+The system would also allow politicians to provide updates on the progress of their promises or to explain why a promise has not yet been fulfilled.
+The system could also provide tools for tracking the performance of politicians over time, such as by displaying graphs showing the percentage of promises fulfilled or by calculating an overall "promise fulfillment score" for each politician.
+
+To ensure the accuracy and impartiality of the information on the system, it could be moderated by a team of independent fact-checkers.
+Overall, the goal of this system would be to provide a transparent and accountable way for politicians to track and report on the promises they have made to the public.
+
 ## Distinctiveness and Complexity
 
 ## How to run the application

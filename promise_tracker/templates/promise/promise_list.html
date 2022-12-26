@@ -17,42 +17,40 @@
             <div class="dataTable-container">
             <table id="datatablesSimple">
             <thead>
-                <tr>
-                    {% for promise in promise_list.get_all_fields %}
-                        <th>{{promise.label}}</th>
-                    {% endfor %}
-                    <th>Name</th>
-                    <th>Ext.</th>
-                    <th>City</th>
-                    <th>Start Date</th>
-                    <th>Completion</th></tr>
+                <tr>                    
+                    <th>title</th>
+                    <th>rating</th>
+                    <th>politician</th>
+                    <th>creator</th>
+                    <th>date</th>
+                    <th>status</th>
+                    <th>View</th>
+                    {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
+                    <th>Update</th>
+                    <th>Delete</th>
+                    {% endif %}
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Unity Pugh</td>
-                    <td>9958</td>
-                    <td>Curicó</td>
-                    <td>2005/02/11</td>
-                    <td>37%</td>
+                {% for promise in promise_list %}                                  
+                <tr>                    
+                    <td>{{promise.title}}</td>
+                    <td>{{promise.rating}}</td>
+                    <td>{{promise.politician}}</td>
+                    <td>{{promise.creator}}</td>
+                    <td>{{promise.date}}</td>
+                    <td>{{promise.status}}</td>
+                    <td> <a href="{% url 'promise_detail' promise.id %} ">View</a></td>
+                    {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
+                    <td><a href="{% url 'promise_update' promise.id %} ">Update</a></td>
+                    <td><a href="{% url 'promise_delete' promise.id %}">Delete</a></td>
+                    {% endif %}                    
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
     </div>
     </div>
-</div>
-    <h1>Promises </h1>
-    <ul>
-    {% for promise in promise_list %}
-                <li>
-                    <span>{{ promise }}</span>
-                    <a href="{% url 'promise_detail' promise.id %} ">View</a>
-                    <a href="{% url 'promise_update' promise.id %} ">Update</a>
-                    <a href="{% url 'promise_delete' promise.id %}">Delete</a>
-                </li>
-    {% endfor %}    
-    </ul>
-    <div class="container">                
-        {% include "promise_tracker/paginator.html" %}                                      
-    </div>
+</div>    
 {% endblock %}

@@ -183,7 +183,7 @@ class PromiseViewSet(viewsets.ModelViewSet):
                     {
                         'id': p.id,
                         'party': p.acronym,
-                        'count': Promise.objects.filter(politician__party=p).count()
+                        'count': Promise.objects.filter(politician__party=p, status=True).count()
                     }
                 )
             return Response(data, status=status.HTTP_200_OK)

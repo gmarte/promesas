@@ -1,18 +1,89 @@
 id,title,description,start_kpi,rating,fuentes,politician,creator,date,status
-1,How to Become a Politicians Promise Influencer in Three Easy Steps,How to Become a Politicians Promise Influencer in Three Easy Steps,11000,5,5,1,1,12/12/2022,1
-2,13 Hottest Politicians Promise Trends for 2023,13 Hottest Politicians Promise Trends for 2023,100,4,4,1,1,12/12/2022,1
-3,7 Movies About Politicians Promise to Watch When You're Bored at Home,7 Movies About Politicians Promise to Watch When You're Bored at Home,100,6,3,1,2,12/12/2022,1
-4,The Most Powerful People in the World of Politicians Promise All Have This Trait in Common,The Most Powerful People in the World of Politicians Promise All Have This Trait in Common,600000,5,1,1,1,12/3/2022,1
-5,A Guide to Politicians Promise at Any Age,A Guide to Politicians Promise at Any Age,13349,6,,9,199,12/4/2022,1
-6,6 Ways Politicians Promise Can Help You Live to 100,6 Ways Politicians Promise Can Help You Live to 100,27478,6,,12,71,12/5/2022,1
-7,The 9 Best Politicians Promise Podcasts of 2022,The 9 Best Politicians Promise Podcasts of 2022,57125,1,,24,93,12/6/2022,1
-8,5 Ways Marketers Are Making You Addicted to Politicians Promise,5 Ways Marketers Are Making You Addicted to Politicians Promise,4736,6,,27,173,12/7/2022,1
-9,Politicians Promise on a Budget? It's Not as Hard as You Think,Politicians Promise on a Budget? It's Not as Hard as You Think,22197,3,,1,88,12/8/2022,1
-10,The 12 Worst Mistakes Politics Project Plan Rookies Make-and How to Avoid Them,The 12 Worst Mistakes Politics Project Plan Rookies Make-and How to Avoid Them,3296,5,,20,193,12/9/2022,1
-11,The Quickest Way to Get Rich With Politics Project Plan,The Quickest Way to Get Rich With Politics Project Plan,18763,3,,23,129,12/10/2022,1
-12,13 Bizarre Politicians Promise Facts You Need to Know,13 Bizarre Politicians Promise Facts You Need to Know,30793,3,,25,123,12/11/2022,1
-13,How Politics Project Plan Works,How Politics Project Plan Works,21822,5,,10,105,12/12/2022,1
-14,9 Hard Truths About Politicians Promise and How to Face Them,9 Hard Truths About Politicians Promise and How to Face Them,9529,4,,37,41,12/13/2022,1
-15,The History of Politics Project Plan in Under 10 Minutes,The History of Politics Project Plan in Under 10 Minutes,36756,5,,29,39,12/14/2022,1
-16,9 Movies About Politicians Promise to Watch When You're Bored at Home,9 Movies About Politicians Promise to Watch When You're Bored at Home,4343,1,,30,179,12/15/2022,1
-17,The 6 Politics Project Plan Products I Can't Live Without,The 6 Politics Project Plan Products I Can't Live Without,12772,4,,23,109,12/16/2022,1
+88,Test promise,Test promise,100.0,3,8,1,202,2022-12-23,1
+87,I promise to reform the police,I promise to reform the police,23907.0,5,,1,91,2022-12-22,1
+86,I promise to protect the environment and preserve natural resources.,I promise to protect the environment and preserve natural resources.,16277.0,6,,35,23,2022-12-22,1
+85,I promise to invest in scientific research and technological innovation.,I promise to invest in scientific research and technological innovation.,15256.0,3,,3,54,2022-12-22,1
+84,"I promise to improve access to quality, affordable healthcare for all Americans.","I promise to improve access to quality, affordable healthcare for all Americans.",7782.0,5,,14,186,2022-12-22,1
+83,I promise to support small towns and rural communities and help them thrive.,I promise to support small towns and rural communities and help them thrive.,2449.0,5,,12,122,2022-12-22,1
+82,I promise to protect the rights of workers and ensure fair wages and working conditions.,I promise to protect the rights of workers and ensure fair wages and working conditions.,12898.0,1,,20,168,2022-12-22,1
+81,I promise to improve access to affordable housing and reduce homelessness.,I promise to improve access to affordable housing and reduce homelessness.,15427.0,6,,29,12,2022-12-22,1
+80,I promise to invest in clean energy and reduce reliance on fossil fuels.,I promise to invest in clean energy and reduce reliance on fossil fuels.,15388.0,4,,27,93,2022-12-22,1
+79,I promise to support the military and ensure that our service members have the resources they need.,I promise to support the military and ensure that our service members have the resources they need.,22783.0,2,,24,188,2022-12-22,1
+78,I promise to reduce the national debt and improve financial stability.,I promise to reduce the national debt and improve financial stability.,21207.0,1,,22,96,2022-12-22,1
+77,I promise to invest in infrastructure and create jobs in the construction industry.,I promise to invest in infrastructure and create jobs in the construction industry.,9563.0,6,,14,155,2022-12-22,1
+76,I promise to support seniors and improve access to services for older Americans.,I promise to support seniors and improve access to services for older Americans.,24768.0,1,,33,62,2022-12-22,1
+75,I promise to protect the rights of LGBTQ+ individuals and ensure equal treatment under the law.,I promise to protect the rights of LGBTQ+ individuals and ensure equal treatment under the law.,19672.0,3,,30,154,2022-12-22,1
+74,I promise to combat discrimination and promote inclusion and diversity.,I promise to combat discrimination and promote inclusion and diversity.,1127.0,3,,26,138,2022-12-22,1
+73,I promise to protect the rights of women and ensure gender equality.,I promise to protect the rights of women and ensure gender equality.,20825.0,5,,11,87,2022-12-22,1
+72,I promise to support small businesses and help them grow and thrive.,I promise to support small businesses and help them grow and thrive.,13804.0,5,,14,190,2022-12-22,1
+71,I promise to reduce the cost of prescription drugs and make healthcare more affordable.,I promise to reduce the cost of prescription drugs and make healthcare more affordable.,23096.0,3,,8,132,2022-12-22,1
+70,I promise to improve public schools and increase funding for education.,I promise to improve public schools and increase funding for education.,19504.0,2,,29,94,2022-12-22,1
+69,I promise to support farmers and the agriculture industry.,I promise to support farmers and the agriculture industry.,8407.0,6,,8,86,2022-12-22,1
+68,I promise to invest in public transportation and reduce traffic congestion.,I promise to invest in public transportation and reduce traffic congestion.,2880.0,2,,1,149,2022-12-22,1
+67,I promise to support disaster relief and recovery efforts.,I promise to support disaster relief and recovery efforts.,22632.0,3,,9,62,2022-12-22,1
+66,"I promise to improve access to quality, affordable healthcare in rural areas.","I promise to improve access to quality, affordable healthcare in rural areas.",24117.0,6,,30,137,2022-12-22,1
+65,I promise to support the arts and cultural institutions.,I promise to support the arts and cultural institutions.,24769.0,1,,38,108,2022-12-22,1
+64,I promise to improve access to clean water and sanitation.,I promise to improve access to clean water and sanitation.,7030.0,1,,1,69,2022-12-22,1
+63,I promise to support military families and improve services for active duty service members.,I promise to support military families and improve services for active duty service members.,16013.0,4,,13,22,2022-12-22,1
+62,I promise to invest in renewable energy and reduce reliance on fossil fuels.,I promise to invest in renewable energy and reduce reliance on fossil fuels.,1745.0,5,,1,81,2022-12-22,1
+61,I promise to support small towns and rural areas.,I promise to support small towns and rural areas.,5222.0,1,,28,91,2022-12-22,1
+60,I promise to improve public safety and reduce crime rates.,I promise to improve public safety and reduce crime rates.,11052.0,4,,32,46,2022-12-22,1
+59,I promise to combat corruption and increase transparency in government.,I promise to combat corruption and increase transparency in government.,15164.0,3,,3,1,2022-12-22,1
+58,I promise to invest in scientific research and technological innovation.,I promise to invest in scientific research and technological innovation.,24406.0,1,,17,169,2022-12-22,1
+57,"I promise to improve access to quality, affordable childcare.","I promise to improve access to quality, affordable childcare.",23950.0,6,,11,95,2022-12-22,1
+56,I promise to protect and preserve public lands and natural resources.,I promise to protect and preserve public lands and natural resources.,5967.0,2,,31,45,2022-12-22,1
+55,I promise to improve access to affordable housing.,I promise to improve access to affordable housing.,10963.0,5,,1,119,2022-12-22,1
+54,I promise to protect the rights of workers and improve labor conditions.,I promise to protect the rights of workers and improve labor conditions.,7204.0,3,,11,16,2022-12-22,1
+53,I promise to reform immigration policy and create a pathway to citizenship for undocumented immigrants.,I promise to reform immigration policy and create a pathway to citizenship for undocumented immigrants.,20274.0,5,,1,41,2022-12-22,1
+52,I promise to support farmers and rural communities.,I promise to support farmers and rural communities.,10811.0,3,,15,90,2022-12-22,1
+51,I promise to protect the rights of marginalized and disadvantaged communities.,I promise to protect the rights of marginalized and disadvantaged communities.,675.0,6,,28,183,2022-12-22,1
+50,I promise to improve access to mental health services.,I promise to improve access to mental health services.,11071.0,3,,1,154,2022-12-22,1
+49,I promise to support veterans and their families.,I promise to support veterans and their families.,5536.0,2,,32,165,2022-12-22,1
+48,I promise to improve infrastructure and invest in transportation.,I promise to improve infrastructure and invest in transportation.,12029.0,6,,27,95,2022-12-22,1
+47,I promise to protect social security and improve retirement benefits.,I promise to protect social security and improve retirement benefits.,8940.0,5,,14,70,2022-12-22,1
+46,I promise to support small businesses and entrepreneurship.,I promise to support small businesses and entrepreneurship.,1435.0,4,,12,153,2022-12-22,1
+45,I promise to reform the criminal justice system and reduce mass incarceration.,I promise to reform the criminal justice system and reduce mass incarceration.,6467.0,6,,30,72,2022-12-22,1
+44,I promise to provide affordable healthcare for all citizens.,I promise to provide affordable healthcare for all citizens.,17119.0,3,,11,177,2022-12-22,1
+43,I promise to strengthen national security and protect our country from threats.,I promise to strengthen national security and protect our country from threats.,23443.0,3,,34,113,2022-12-22,1
+42,I promise to protect the environment and combat climate change.,I promise to protect the environment and combat climate change.,23303.0,4,,27,169,2022-12-22,1
+41,I promise to improve public education and make college more affordable.,I promise to improve public education and make college more affordable.,17001.0,3,,12,40,2022-12-22,1
+40,I promise to lower taxes and reduce government spending.,I promise to lower taxes and reduce government spending.,13142.0,1,,24,151,2022-12-22,1
+39,I promise to create jobs and stimulate economic growth.,I promise to create jobs and stimulate economic growth.,9566.0,3,,31,22,2022-12-22,1
+38,Promising to address the opioid crisis,Promising to address the opioid crisis,19920.0,4,,1,78,2022-12-22,1
+37,Promising to improve access to clean water and sanitation,Promising to improve access to clean water and sanitation,22730.0,5,,32,196,2022-12-22,1
+36,Promising to support farmers and rural communities,Promising to support farmers and rural communities,19768.0,6,,38,186,2022-12-22,1
+35,Promising to improve access to affordable housing,Promising to improve access to affordable housing,11248.0,4,,26,5,2022-12-22,1
+34,Promising to address immigration reform,Promising to address immigration reform,7348.0,2,,12,143,2022-12-22,1
+33,Promising to strengthen protections for civil rights and liberties,Promising to strengthen protections for civil rights and liberties,7290.0,2,,29,101,2022-12-22,1
+32,Promising to improve relations with foreign countries,Promising to improve relations with foreign countries,20878.0,6,,9,198,2022-12-22,1
+31,Promising to increase military spending,Promising to increase military spending,16434.0,3,,36,135,2022-12-22,1
+30,Promising to reduce government spending,Promising to reduce government spending,19925.0,6,,23,194,2022-12-22,1
+29,Promising to support small businesses,Promising to support small businesses,6557.0,3,,17,179,2022-12-22,1
+28,Promising to improve social services,Promising to improve social services,777.0,1,,23,25,2022-12-22,1
+27,Promising to address climate change,Promising to address climate change,12422.0,6,,34,101,2022-12-22,1
+26,Promising to protect the environment,Promising to protect the environment,13967.0,2,,34,189,2022-12-22,1
+25,Promising to improve infrastructure,Promising to improve infrastructure,4356.0,3,,23,141,2022-12-22,1
+24,Promising to increase national security,Promising to increase national security,8867.0,6,,19,74,2022-12-22,1
+23,Promising to reduce crime,Promising to reduce crime,1006.0,2,,21,133,2022-12-22,1
+22,Promising to improve education,Promising to improve education,12916.0,5,,28,66,2022-12-22,1
+21,Promising to improve healthcare,Promising to improve healthcare,13995.0,3,,28,168,2022-12-22,1
+20,Promising to create more jobs,Promising to create more jobs,2297.0,2,,21,46,2022-12-22,1
+19,Promising to lower taxes,Promising to lower taxes,8003.0,3,,33,134,2022-12-22,1
+18,We are committed to bring Joaquin Balaguer back!,We are committed to bring Joaquin Balaguer back!,1.0,6,7,38,1,2022-12-22,1
+17,The 6 Politics Project Plan Products I Can't Live Without,The 6 Politics Project Plan Products I Can't Live Without,12772.0,4,,23,109,2022-12-16,1
+16,9 Movies About Politicians Promise to Watch When You're Bored at Home,9 Movies About Politicians Promise to Watch When You're Bored at Home,4343.0,1,,30,179,2022-12-16,1
+15,The History of Politics Project Plan in Under 10 Minutes,The History of Politics Project Plan in Under 10 Minutes,36756.0,5,,29,39,2022-12-16,1
+14,9 Hard Truths About Politicians Promise and How to Face Them,9 Hard Truths About Politicians Promise and How to Face Them,9529.0,4,,37,41,2022-12-16,1
+13,How Politics Project Plan Works,How Politics Project Plan Works,21822.0,5,,10,105,2022-12-16,1
+12,13 Bizarre Politicians Promise Facts You Need to Know,13 Bizarre Politicians Promise Facts You Need to Know,30793.0,3,,25,123,2022-12-16,1
+11,The Quickest Way to Get Rich With Politics Project Plan,The Quickest Way to Get Rich With Politics Project Plan,18763.0,3,,23,129,2022-12-16,1
+10,The 12 Worst Mistakes Politics Project Plan Rookies Make-and How to Avoid Them,The 12 Worst Mistakes Politics Project Plan Rookies Make-and How to Avoid Them,3296.0,5,,20,193,2022-12-16,1
+9,Politicians Promise on a Budget? It's Not as Hard as You Think,Politicians Promise on a Budget? It's Not as Hard as You Think,22197.0,3,,1,88,2022-12-08,1
+8,5 Ways Marketers Are Making You Addicted to Politicians Promise,5 Ways Marketers Are Making You Addicted to Politicians Promise,4736.0,6,,27,173,2022-12-07,1
+7,The 9 Best Politicians Promise Podcasts of 2022,The 9 Best Politicians Promise Podcasts of 2022,57125.0,1,,1,93,2022-12-06,1
+6,6 Ways Politicians Promise Can Help You Live to 100,6 Ways Politicians Promise Can Help You Live to 100,27478.0,6,,12,71,2022-12-16,1
+5,A Guide to Politicians Promise at Any Age,A Guide to Politicians Promise at Any Age,13349.0,6,,9,199,2022-12-16,1
+4,The Most Powerful People in the World of Politicians Promise All Have This Trait in Common,The Most Powerful People in the World of Politicians Promise All Have This Trait in Common,600000.0,5,1,1,1,2022-12-16,1
+3,7 Movies About Politicians Promise to Watch When You're Bored at Home,7 Movies About Politicians Promise to Watch When You're Bored at Home,100.0,6,3,1,2,2022-12-16,1
+2,13 Hottest Politicians Promise Trends for 2023,13 Hottest Politicians Promise Trends for 2023,100.0,4,4,1,1,2022-12-16,1
+1,How to Become a Politicians Promise Influencer in Three Easy Steps,How to Become a Politicians Promise Influencer in Three Easy Steps,11000.0,5,5,1,1,2022-12-12,1
