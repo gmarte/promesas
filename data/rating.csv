@@ -1,0 +1,7 @@
+id,title,description,color,order
+1,COMPLETE,The promise is mostly or completely fulfilled.,00FF00,1
+2,IN PROGRESS,The promise is in the works or being considered.,00FF00,2
+3,STALLED,Could occur due to inaction by administration or lack of support from legislative branch.,00FF00,3
+4,BEHIND SCHEDULE,"No progress, perhaps due to financial limitations, opposition from lawmakers or a change in priorities.",00FF00,4
+5,INCONCLUSIVE,Every promise begins at this level and retains this rating until evidence of progress or proof that it has been shelved.,00FF00,5
+6,UNSTARTED,"The promise is accomplished only in part, but has succeeded at least in part consistently with the goal of the promise.",00FF00,6
