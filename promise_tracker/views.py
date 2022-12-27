@@ -26,7 +26,7 @@ from django.views.decorators.csrf import csrf_exempt
 from PIL import Image
 from django.forms import inlineformset_factory
 from promise_tracker.forms import PromisesForm
-from promise_tracker.forms import SourceForm
+from promise_tracker.forms import EvidenceForm
 
 from .models import Promise, Evidence, Party, Position, Politician, Source, User, PartyValidity, Rating
 
@@ -35,12 +35,20 @@ def index(request):
     
     promises = Promise.objects.all()
     politicians = Politician.objects.all()
+    politicians_count = Politician.objects.all().count()
+    evidences_count = Evidence.objects.filter(status=True).count()
     parties = Party.objects.all()
+    parties_count = Party.objects.all().count()
+    promises_count = Promise.objects.filter(status=True).count()
    
     return render(request, "promise_tracker/index.html", {
         "promises": promises,
+        "promises_count": promises_count,
         "politicians": politicians,
+        "politicians_count": politicians_count,
         "parties": parties,
+        "parties_count": parties_count,
+        "evidences_count": evidences_count,
         "segment": 'index'
     })
 
@@ -116,7 +124,7 @@ class PromiseCreateView(PromiseBaseView, CreateView):
     """View to create a new promise"""
     def get_context_data(self, **kwargs):                
         # source_form = source.get_form_class()
-        formset = SourceForm
+        formset = EvidenceForm
         context = super().get_context_data(**kwargs)
         context['formset'] = formset        
         return context        
@@ -125,29 +133,28 @@ class PromiseCreateView(PromiseBaseView, CreateView):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)       
-        promise_source_form = SourceForm(self.request.POST)
-        if form.is_valid() and promise_source_form.is_valid():
-            return self.form_valid(form, promise_source_form)
+        promise_evidence_form = EvidenceForm(self.request.POST)
+        if form.is_valid() and promise_evidence_form.is_valid():
+            return self.form_valid(form, promise_evidence_form)
         else:
-            return self.form_invalid(form, promise_source_form)
-    def form_valid(self, form, promise_source_form):
+            return self.form_invalid(form, promise_evidence_form)
+    def form_valid(self, form, promise_evidence_form):
         form.instance.creator_id = self.request.user.id        
         self.object = form.save()                
 
-        # saving Sources Instances
-        source = promise_source_form.save(commit=False)
-        source.creator = self.request.user
-        source.save()
+        # saving Evidence Instances
+        evidence = promise_evidence_form.save(commit=False)
+        evidence.creator = self.request.user
+        evidence.promise = self.object
+        evidence.save()
         # for sc in source:                        
         #     sc.save()
-        self.object.fuentes.add(source)
-
 
         return HttpResponseRedirect(self.get_success_url())
-    def form_invalid(self, form, promise_source_form):        
+    def form_invalid(self, form, promise_evidence_form):        
         return self.render_to_response(
                  self.get_context_data(form=form,
-                                       formset=promise_source_form
+                                       formset=promise_evidence_form
                                        )
         )
 class PromiseDetailView(PromiseBaseView, DetailView):
@@ -157,10 +164,12 @@ class PromiseDetailView(PromiseBaseView, DetailView):
     Use the 'Promise' variable in the template to access
     the specific Promise here and in the Views below"""   
     def get_context_data(self, **kwargs):    
+        formset = EvidenceForm                
         self.object = self.get_object()    
         evidences = self.object.evidences.all()
         context = super().get_context_data(**kwargs)
-        context['evidences'] = evidences        
+        context['evidences'] = evidences      
+        context['formset'] = formset         
         return context 
 
 class PromiseUpdateView(PromiseBaseView, UpdateView):

@@ -18,12 +18,13 @@
             <table id="datatablesSimple">
             <thead>
                 <tr>                    
-                    <th>title</th>
-                    <th>rating</th>
-                    <th>politician</th>
-                    <th>creator</th>
-                    <th>date</th>
-                    <th>status</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Politician</th>
+                    <th>Creator</th>
+                    <th>Date</th>
+                    <th>Evidences</th>
+                    <th>Active</th>                    
                     <th>View</th>
                     {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
                     <th>Update</th>
@@ -39,7 +40,8 @@
                     <td>{{promise.politician}}</td>
                     <td>{{promise.creator}}</td>
                     <td>{{promise.date}}</td>
-                    <td>{{promise.status}}</td>
+                    <td>{{promise.evidence_count}}</td>
+                    <td>{{promise.status}}</td>                    
                     <td> <a href="{% url 'promise_detail' promise.id %} ">View</a></td>
                     {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
                     <td><a href="{% url 'promise_update' promise.id %} ">Update</a></td>

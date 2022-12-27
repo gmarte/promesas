@@ -22,18 +22,12 @@ class PromisesForm(forms.ModelForm):
     # creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, default=None)
     # date = models.DateField(auto_now_add=True)
     # status = models.BooleanField(default=False)
-class SourceForm(forms.ModelForm):
-    NEWS = '01'
-    VIDEO = '02'
-    PHOTO = '03'
-    TYPES_CHOICES = [
-        (NEWS, 'Prensa'),
-        (VIDEO, 'Video'),
-        (PHOTO, 'Foto'),
-    ]
-    url = forms.CharField(label='Url:', max_length=200, widget=forms.TextInput(
+class EvidenceForm(forms.ModelForm):    
+    title = forms.CharField(label='Title:', max_length=200, widget=forms.TextInput(
                               attrs={'class': 'form-control'}))
-    type = forms.ChoiceField(label='Type', widget=forms.Select(attrs={'class': 'form-control'}), choices=TYPES_CHOICES)  
+    source = forms.CharField(label='Source:', max_length=200, widget=forms.TextInput(
+                              attrs={'class': 'form-control'}))                              
+    kpi = forms.CharField(label='Key performance indicator (KPI):', widget=forms.TextInput(attrs={'class': "form-control"}))                              
     class Meta:
-        model = Source
-        fields = ['url', 'type']
+        model = Evidence
+        fields = ['title', 'source', 'kpi']

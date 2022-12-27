@@ -16,7 +16,7 @@
             <!-- Politician details card-->
             <div class="card card-raised mb-5">
                 <div class="card-body p-5">                    
-                    <form>
+                    <!-- <form> -->
                         <!-- Form Group (username)-->
                         <div class="mb-4"><mwc-textfield readonly=""  class="w-100" label="Tittle" outlined="" value="{{promise.title}}"></mwc-textfield></div>
                         <div class="row mb-4"><mwc-textarea readonly=""  class="w-100" label="Description" outlined="" value="{{promise.description}}"></mwc-textarea></div>
@@ -38,11 +38,11 @@
                         <!-- Save changes button-->
 
                         <div class="text-end"><a href="{% url 'promises' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a></div>
-                    </form>
-                </div>
+                    <!-- </form> -->
+                </div>                
                 {% if evidences %} 
                 <div class="card-body p-4">
-                    <div class="card-title">Evidences</div>
+                    <div class="card-title">List of Evidences</div>
                     <!-- Simple DataTables example-->   
                     <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                         <div class="dataTable-container">

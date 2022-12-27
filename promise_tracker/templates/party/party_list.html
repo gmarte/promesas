@@ -12,8 +12,5 @@
                     <a href="{% url 'party_delete' party.id %}">Delete</a>
                 </li>
     {% endfor %}    
-    </ul>
-    <div class="container">                
-        {% include "promise_tracker/paginator.html" %}                                      
-    </div>
+    </ul>    
 {% endblock %}
