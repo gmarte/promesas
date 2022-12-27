@@ -24,8 +24,8 @@ The current president of the Dominican Republic, Luis Abinader, and several poli
 I have designed and developed a web application using Django, REST framework, and Bootstrap to fulfill the requirements of the assignment.
 
 - [x] Your web application must be sufficiently distinct from the other projects in this course (and, in addition, may not be based on the old CS50W Pizza project), and more complex than those.
-  -- [x] A project that appears to be a social network is a priori deemed by the staff to be indistinct from Project 4, and should not be submitted; it will be rejected.
-  -- [x] A project that appears to be an e-commerce site is strongly suspected to be indistinct from Project 2, and your README.md file should be very clear as to why it’s not. failing that, it should not be submitted; it will be rejected.
+  - [x] A project that appears to be a social network is a priori deemed by the staff to be indistinct from Project 4, and should not be submitted; it will be rejected.
+  - [x] A project that appears to be an e-commerce site is strongly suspected to be indistinct from Project 2, and your README.md file should be very clear as to why it’s not. failing that, it should not be submitted; it will be rejected.
 - [x] Your web application must utilize Django (including at least one model) on the back-end and JavaScript on the front-end.
 - [x] Your web application must be mobile-responsive.
 
