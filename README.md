@@ -36,9 +36,10 @@ Each promise can have following status:
 | UNSTARTED | The promise is accomplished only in part, but has succeeded at least in part consistently with the goal of the promise.
 
 - Users of the web application can search for promises by politician, by keyword, by date, by evidences or by status.
-- The web application provides reports for the users to track on the progress of a promise, such as by providing updates or evidence of fulfillment.
+- The web application provides reports for the users to track on the progress of a promise, such as by evidence of progress or fulfillment.
 - The web application also provide a dashboard for tracking the performance of politicians and party over time, such as by displaying graphs showing the percentage of promises and their status.
-- To ensure the accuracy and impartiality of the information on the web application, it would be moderated by a team of independent fact-checkers.
+- To ensure the accuracy and impartiality of the information on the web application, it would be moderated by a team of independent fact-checkers and admins.
+  - Fact-checkers / admins are the ones able to accept the promises and evivences.
 
 Overall, the goal of this web application is to provide a transparent and accountable to track and report on the promises the politicians have made to the public.
 
@@ -51,6 +52,10 @@ The web application uses 8 models and utilizes Django REST framework to support 
 | GET	|/promises/politician/id |	Retrieve a politicians and promises rating | pie chart |
 | GET	|/promises/party/id |	Retrieve a party and promises rating | pie chart |
 
+![Dashboard Bar & Donut Charts.js](https://i.imgur.com/BVcYxJm.png)
+
+![Dashboard Pie Charts.js](https://i.imgur.com/Q8uQxDE.png)
+
 The web application is designed to be mobile-responsive using the Bootstrap CSS framework.
 
 - [x] Your web application must be sufficiently distinct from the other projects in this course (and, in addition, may not be based on the old CS50W Pizza project), and more complex than those.
@@ -59,7 +64,7 @@ The web application is designed to be mobile-responsive using the Bootstrap CSS 
 - [x] Your web application must utilize Django (including at least one model) on the back-end and JavaScript on the front-end.
 - [x] Your web application must be mobile-responsive.
 
-## File Structure Description
+## Files Structure Description
 ```
 |   .gitignore
 |   db.sqlite3
@@ -156,6 +161,52 @@ The web application is designed to be mobile-responsive using the Bootstrap CSS 
 ```
 ## How to run the application
 
+> **Clone Sources**
+
+```bash
+$ git clone https://github.com/gmarte/promesas.git
+$ cd promesas
+```
+
+>  **Install Modules** using a Virtual Environment
+
+```bash
+$ python -m venv venv
+$ .\env\Scripts\activate
+$ pip install -r requirements.txt
+```
+
+>  **Migrate Database**
+
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py runserver
+```
+
+>  **Create Superuser**
+
+```bash
+$ python manage.py createsuperuser
+```
+
+>  **Start the APP**
+
+```bash
+$ python manage.py runserver
+```
+
+> Follow in order:
+
+- Access the `admin` section 
+  - Load `data/users.csv` in users section (using import/export feature)
+  - Load `data/rating.csv` in rating section (using import/export feature)
+  - Load `data/position.csv` in position section (using import/export feature)
+  - Load `data/party.csv` in party section (using import/export feature)
+  - Load `data/politician.csv` in politician section (using import/export feature)
+  - Load `data/promise.csv` in promise section (using import/export feature)
+- Access the HOMEpage 
+  - Charts should be displayed with data
 ## TODO List
 
 
