@@ -21,18 +21,11 @@ The current president of the Dominican Republic, Luis Abinader, and several poli
 
 ## Distinctiveness and Complexity
 
-I have designed and developed a web application using Django, REST framework, and Bootstrap to fulfill the requirements of the assignment.
+I have designed and developed a web application using Django, REST framework, and Bootstrap to fulfill the requirements of the assignment. I developed this project based on a personal need and believe it will be useful for all Dominicans.
 
-- [x] Your web application must be sufficiently distinct from the other projects in this course (and, in addition, may not be based on the old CS50W Pizza project), and more complex than those.
-  - [x] A project that appears to be a social network is a priori deemed by the staff to be indistinct from Project 4, and should not be submitted; it will be rejected.
-  - [x] A project that appears to be an e-commerce site is strongly suspected to be indistinct from Project 2, and your README.md file should be very clear as to why it’s not. failing that, it should not be submitted; it will be rejected.
-- [x] Your web application must utilize Django (including at least one model) on the back-end and JavaScript on the front-end.
-- [x] Your web application must be mobile-responsive.
+The web application has a database of promises made by politicians. These promises are entered by users or admins collected from public statements made by politicians.
 
-### Features
-
-The web application has a database of promises made by politicians. These promises could are entered manually by users or admins collected from public statements made by politicians.
-Each promise would have following status: 
+Each promise can have following status: 
 | STATUS | DESCRIPTION |
 | ------ | ------ |
 | COMPLETE | The promise is mostly or completely fulfilled.
@@ -48,6 +41,23 @@ Each promise would have following status:
 - To ensure the accuracy and impartiality of the information on the web application, it would be moderated by a team of independent fact-checkers.
 
 Overall, the goal of this web application is to provide a transparent and accountable to track and report on the promises the politicians have made to the public.
+
+The web application uses 8 models and utilizes Django REST framework to support front-end functionalities.
+
+| Method | Endpoint | Result | Chart type |
+| ------ | ------ | ------ | ------ |
+| GET	|/promises/party |	Retrieve the list of all parties and promises count	| pie chart |
+| GET	|/promises/politician/ |	Retrieve the list of all politicians and promises count |	bar chart |
+| GET	|/promises/politician/id |	Retrieve a politicians and promises rating | pie chart |
+| GET	|/promises/party/id |	Retrieve a party and promises rating | pie chart |
+
+The web application is designed to be mobile-responsive using the Bootstrap CSS framework.
+
+- [x] Your web application must be sufficiently distinct from the other projects in this course (and, in addition, may not be based on the old CS50W Pizza project), and more complex than those.
+  - [x] A project that appears to be a social network is a priori deemed by the staff to be indistinct from Project 4, and should not be submitted; it will be rejected.
+  - [x] A project that appears to be an e-commerce site is strongly suspected to be indistinct from Project 2, and your README.md file should be very clear as to why it’s not. failing that, it should not be submitted; it will be rejected.
+- [x] Your web application must utilize Django (including at least one model) on the back-end and JavaScript on the front-end.
+- [x] Your web application must be mobile-responsive.
 
 ## File Structure Description
 ```
