@@ -54,6 +54,8 @@ ratingPolitician.then((response) => {
     ratings =  response.ratings;
     // document.querySelector('#profile_pic').src = response.photo;
     document.querySelector('#politician_name').innerHTML = response.fname + ' ' +response.lname;
+    document.querySelector('#politician_id').href = '/politicians/'+response.id+'/detail';
+    // http://127.0.0.1:8000/politicians/8/detail
     const dataRatingPolitician = {
         labels: ratings.map((x) => x.title ),
         datasets: [{

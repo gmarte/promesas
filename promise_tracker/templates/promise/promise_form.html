@@ -21,15 +21,10 @@
                     <hr>
                     {{ formset.as_div }}        
                     <input type="submit" class="btn btn-lg btn-primary" value="Save">
+                    <div class="text-end"><a href="{% url 'promises' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a></div>
                 </div>
-            </form>
-            <div class="container">                
-                {% include "promise_tracker/paginator.html" %}                                      
-            </div>
+            </form>            
         </div>
     </div>
-</div>    
-    <div class="container">                
-        {% include "promise_tracker/paginator.html" %}                                      
-    </div>
+</div>        
 {% endblock %}

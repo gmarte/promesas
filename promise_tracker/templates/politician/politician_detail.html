@@ -2,41 +2,65 @@
 {% load static %}
 
 {% block body %}
-<div class="container mt-5" style="width: 70%;">
-    <div class="col">
-        <h1 class="text-center">Politician Details</h1>
-        <div class="d-flex justify-content-center">
-            <table class="table table-striped mt-5" style="width: 50%">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% if politician.get_fields|length > 1 %}
-                    {% for label, value in politician.get_fields  %}
-                        <tr>
-                            <td>{{label | upper}}</td>
-                            <td>{{value}}</td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                <tr>
-                    <td>Name</td>
-                    <td>{{politician}}</td>
-                    <img src="{{party.logo}}" />
-                </tr>
-                {% endif %}
-                </tbody>
-            </table>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'politicians' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
+<div class="card card-raised">
+    <div class="card-header bg-primary text-white px-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="me-4">
+                <h2 class="card-title text-white mb-0">Politician </h2>
+                <div class="card-subtitle">Politician details</div>
+            </div>            
         </div>
     </div>
-        
+    <div class="row gx-5">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card card-raised mb-5">
+                <div class="card-body p-5">
+                    <div class="card-title">Politician Profile Image</div>
+                    <div class="card-subtitle mb-4">This image will be publicly visible to other users.</div>
+                    <div class="text-center">
+                        <!-- Profile picture image-->
+                        {% if politician.photo %}
+                        <img class="img-fluid rounded-circle mb-1" src="{{politician.photo.url}}" alt="..." style="max-width: 150px; max-height: 150px">                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <div class="col-xl-8">
+            <!-- Politician details card-->
+            <div class="card card-raised mb-5">
+                <div class="card-body p-5">
+                    <div class="card-title">Politician Details</div>                    
+                    <form>
+                        <!-- Form Group (username)-->
+                        <div class="mb-4"><mwc-textfield readonly=""  class="w-100" label="Full Name" outlined="" value="{{politician}}"></mwc-textfield></div>
+                        <!-- Form Row-->
+                        <div class="row mb-4">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6"><mwc-textfield readonly="" class="w-100" label="First Name" outlined="" value="{{politician.fname}}"></mwc-textfield></div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6"><mwc-textfield readonly="" class="w-100" label="Last Name" outlined="" value="{{politician.lname}}"></mwc-textfield></div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row mb-4">
+                            <!-- Form Group (party name)-->
+                            <div class="col-md-6"><mwc-textfield readonly="" class="w-100" label="Party Name" outlined="" value="{{politician.party}}"></mwc-textfield></div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6"><mwc-textfield readonly="" class="w-100" label="Position" outlined="" value="{{politician.position}}"></mwc-textfield></div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="row mb-4">
+                            <div class="col-md-6"><mwc-textfield readonly="" class="w-100" label="Religion" outlined="" type="email" value="{{politician.religion}}"></mwc-textfield></div>                            
+                        </div>                        
+                        <!-- Save changes button-->
+                        <div class="text-end"><a href="{% url 'politicians' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>                  
 </div>
 
 {% endblock  %}
+

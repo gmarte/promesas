@@ -2,16 +2,27 @@
 {% load static %}
 
 {% block body %}
-    <h1>New Politician </h1>
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        <div class="form-group">
-            {{ form.as_p }}
-            <hr>
-            {{ formset.as_p }}
-            <input type="submit" value="Save">
+<div class="card card-raised">
+    <div class="card-header bg-primary text-white px-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="me-4">
+                <h2 class="card-title text-white mb-0">New/Update Politician </h2>
+                <div class="card-subtitle">The lies to get into power</div>
+            </div>            
         </div>
-    </form>
-    <div class="container">                
-        {% include "promise_tracker/paginator.html" %}                                      
     </div>
+    <div class="card-body p-4">
+        <div class="form-group" id="promise">
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+                <hr>
+                {{ formset.as_p }}
+                <input type="submit" class="btn btn-lg btn-primary" value="Save">
+                <div class="text-end"><a href="{% url 'politicians' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a></div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>        
 {% endblock %}

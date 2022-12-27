@@ -155,7 +155,13 @@ class PromiseDetailView(PromiseBaseView, DetailView):
     
     """View to list the details from one Promise.
     Use the 'Promise' variable in the template to access
-    the specific Promise here and in the Views below"""    
+    the specific Promise here and in the Views below"""   
+    def get_context_data(self, **kwargs):    
+        self.object = self.get_object()    
+        evidences = self.object.evidences.all()
+        context = super().get_context_data(**kwargs)
+        context['evidences'] = evidences        
+        return context 
 
 class PromiseUpdateView(PromiseBaseView, UpdateView):
     template_name = 'promise/promise_form.html'

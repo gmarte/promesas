@@ -50,6 +50,7 @@ function change_ratingp(id){
     axios.get('http://127.0.0.1:8000/api/promise/politician?id='+id).then(response => {
         ratings =  response.data.ratings;        
         document.querySelector('#politician_name').innerHTML = response.data.fname + ' ' +response.data.lname;
+        document.querySelector('#politician_id').href = '/politicians/'+response.data.id+'/detail';
         const dataRatingPolitician = {
             labels: ratings.map((x) => x.title ),
             datasets: [{
