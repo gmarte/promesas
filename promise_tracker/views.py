@@ -346,7 +346,7 @@ class PartyDeleteView(PartyBaseView, DeleteView):
 #region Politician
 class PoliticianBaseView(View):
     model = Politician
-    fields = ['fname','lname','country','religion', 'education','photo','position']
+    fields = ['fname','lname','country', 'party','religion', 'education','photo','position']
     labels = {'fname':'First Name:'}
     # PoliticianPartyFormSet = inlineformset_factory(Politician, PartyValidity, fields=('party', 'ini', 'end'))
     success_url = reverse_lazy('politicians')    
