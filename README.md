@@ -3,7 +3,7 @@
 - [CS50W Final Project - Promises](#cs50w-final-project---promises)
   - [Overview](#overview)
   - [Distinctiveness and Complexity](#distinctiveness-and-complexity)
-  - [File structure description](#file-strcuture-descriotion)
+  - [File structure description](#files-strcuture-description)
   - [How to run the application](#how-to-run-the-application)
   - [Features I would like to improve/add](#todo-list)
 
