@@ -35,7 +35,7 @@ def index(request):
     
     promises = Promise.objects.all()
     politicians = Politician.objects.all()
-    politicians_count = Politician.objects.all().count()
+    politicians_count = Politician.objects.filter(status=True).count()
     evidences_count = Evidence.objects.filter(status=True).count()
     parties = Party.objects.all()
     parties_count = Party.objects.all().count()
