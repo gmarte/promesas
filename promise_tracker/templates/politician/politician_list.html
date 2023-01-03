@@ -40,10 +40,10 @@
                     <td>{{politician.position}}</td>
                     <td>{{politician.religion}}</td>
                     <td>{{politician.status}}</td>
-                    <td> <a href="{% url 'politician_detail' politician.id %} ">View</a></td>
+                    <td> <a href="{% url 'politician_detail' politician.id %}" class="btn btn-outline-primary btn-sm">View</a></td>
                     {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
-                    <td><a href="{% url 'politician_update' politician.id %} ">Update</a></td>
-                    <td><a href="{% url 'politician_delete' politician.id %}">Delete</a></td>
+                    <td><a href="{% url 'politician_update' politician.id %}" class="btn btn-outline-primary btn-sm">Update</a></td>
+                    <td><a href="{% url 'politician_delete' politician.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                     {% endif %}                    
                 </tr>
                 {% endfor %}

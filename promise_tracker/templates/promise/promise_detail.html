@@ -36,8 +36,9 @@
                         </div>
                         <!-- Form Group (email address)-->                                                
                         <!-- Save changes button-->
-
-                        <div class="text-end"><a href="{% url 'promises' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a></div>
+                        <button type="button"  class="btn btn-primary btn-lg pr-4" data-toggle="modal" data-target="#ModalEvidence" >Create Evidence</button>
+                        <a href="{% url 'promises' %}" class="btn btn-outline-primary btn-lg my-5">BACK</a>
+                        <!-- <div class="text-end"><a href="{% url 'promises' %}" class="btn btn-outline-primary btn-lg my-5">BACK</a></div> -->                                               
                     <!-- </form> -->
                 </div>                
                 {% if evidences %} 
@@ -46,35 +47,56 @@
                     <!-- Simple DataTables example-->   
                     <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
                         <div class="dataTable-container">
-                        <table id="datatablesSimple">
-                        <thead>
-                            <tr>                    
-                                <th>title</th>
-                                <th>KPI</th>                                                                
-                                <th>creator</th>
-                                <th>date</th>
-                                <th>status</th>                          
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for evidence in evidences %}                                  
-                            <tr>                    
-                                <td>{{evidence.title}}</td>                                
-                                <td>{{evidence.kpi}}</td>                                
-                                <td>{{evidence.creator}}</td>
-                                <td>{{evidence.date}}</td>
-                                <td>{{evidence.status}}</td>                                                  
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-                </div>
+                            <table id="datatablesSimple">
+                            <thead>
+                                <tr>                    
+                                    <th>title</th>
+                                    <th>KPI</th>                                                                
+                                    <th>creator</th>
+                                    <th>date</th>
+                                    <th>status</th>                          
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for evidence in evidences %}                                  
+                                <tr>                    
+                                    <td>{{evidence.title}}</td>                                
+                                    <td>{{evidence.kpi}}</td>                                
+                                    <td>{{evidence.creator}}</td>
+                                    <td>{{evidence.date}}</td>
+                                    <td>{{evidence.status}}</td>                                                  
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            </table>
+                        </div>    
+                    </div>
                 </div>  
                 {% endif %}             
             </div>       
         </div>
     </div>          
 </div>
+ <!-- Modal -->
+ <div class="modal fade" id="ModalEvidence" tabindex="-1" role="dialog" aria-labelledby="ModalEvidenceTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="ModalEvidenceTitle">Create Evidence</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        ...
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- End of Modal-->
 
 {% endblock  %}

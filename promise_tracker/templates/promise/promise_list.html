@@ -42,10 +42,10 @@
                     <td>{{promise.date}}</td>
                     <td>{{promise.evidence_count}}</td>
                     <td>{{promise.status}}</td>                    
-                    <td> <a href="{% url 'promise_detail' promise.id %} ">View</a></td>
+                    <td> <a href="{% url 'promise_detail' promise.id %}" class="btn btn-outline-primary btn-sm">View</a></td>
                     {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
-                    <td><a href="{% url 'promise_update' promise.id %} ">Update</a></td>
-                    <td><a href="{% url 'promise_delete' promise.id %}">Delete</a></td>
+                    <td><a href="{% url 'promise_update' promise.id %} " class="btn btn-outline-primary btn-sm">Update</a></td>
+                    <td><a href="{% url 'promise_delete' promise.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                     {% endif %}                    
                 </tr>
                 {% endfor %}
