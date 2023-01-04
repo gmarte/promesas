@@ -117,6 +117,25 @@ class PromiseListView(PromiseBaseView, ListView):
     """View to list all pipromise.
     Use the 'promise_list' variable in the template
     to access all Promise objects"""
+    # def get(self, request, *args, **kwargs):        
+    #     bool = False
+    #     if request.path_info == '/user/promises':
+    #         bool = True
+    #         self.get_context_data(self, request, bool, **kwargs)
+    #     return super().get(request, **kwargs)
+    def get_queryset(self):
+        # queryset = super().get_queryset()
+        if self.request.path_info == '/user/promises':
+            return Promise.objects.filter(creator=self.request.user)
+        else:
+            return Promise.objects.all()
+
+    # def get_context_data(self, request, bool, **kwargs):               
+    #     context = super().get_context_data(**kwargs)        
+    #     if bool:
+    #         context['promise_list'] = Promise.objects.filter(creator=request.user)        
+    #     return context               
+
 
 
 class PromiseCreateView(PromiseBaseView, CreateView):
@@ -147,9 +166,6 @@ class PromiseCreateView(PromiseBaseView, CreateView):
         evidence.creator = self.request.user
         evidence.promise = self.object
         evidence.save()
-        # for sc in source:                        
-        #     sc.save()
-
         return HttpResponseRedirect(self.get_success_url())
     def form_invalid(self, form, promise_evidence_form):        
         return self.render_to_response(
@@ -158,7 +174,7 @@ class PromiseCreateView(PromiseBaseView, CreateView):
                                        )
         )
 class PromiseDetailView(PromiseBaseView, DetailView):
-    template_name = 'promise/promise_detail.html'
+    template_name = 'promise/promise_detail.html'    
     
     """View to list the details from one Promise.
     Use the 'Promise' variable in the template to access
@@ -171,6 +187,26 @@ class PromiseDetailView(PromiseBaseView, DetailView):
         context['evidences'] = evidences      
         context['formset'] = formset         
         return context 
+    def post(self, request, *args, **kwargs):        
+        self.object = self.get_object()    
+        promise_evidence_form = EvidenceForm(self.request.POST)
+        if promise_evidence_form.is_valid():
+            return self.form_valid(promise_evidence_form)
+        else:
+            return self.form_invalid(promise_evidence_form)
+    def form_valid(self, promise_evidence_form):                    
+        # saving Evidence Instances
+        evidence = promise_evidence_form.save(commit=False)
+        evidence.creator = self.request.user
+        evidence.promise = self.object
+        evidence.save()
+        return HttpResponseRedirect(self.get_success_url())
+    def form_invalid(self, promise_evidence_form):        
+        return self.render_to_response(
+                 self.get_context_data(formset=promise_evidence_form)
+        )
+    def get_success_url(self):
+        return reverse_lazy('promise_detail', kwargs={'pk': self.object.id})
 
 class PromiseUpdateView(PromiseBaseView, UpdateView):
     template_name = 'promise/promise_form.html'
@@ -440,4 +476,41 @@ class PoliticianUpdateView(PoliticianBaseView, UpdateView):
 class PoliticianDeleteView(PoliticianBaseView, DeleteView):
     template_name = 'politician/politician_confirm_delete.html'
     """View to delete a Politician"""
+# endregion
+
+# region Evidence
+class EvidenceBaseView(View):
+    model = Evidence
+    fields = ['title', 'source', 'promise']
+    success_url = reverse_lazy('evidences')
+
+
+class EvidenceListView(EvidenceBaseView, ListView):
+    template_name = 'Evidence/Evidence_list.html'
+    """View to list all Evidences.
+    Use the 'Evidence_list' variable in the template
+    to access all Evidence objects"""
+
+
+class EvidenceDetailView(EvidenceBaseView, DetailView):
+    template_name = 'Evidence/Evidence_detail.html'
+    
+    """View to list the details from one Evidence.
+    Use the 'Evidence' variable in the template to access
+    the specific Evidence here and in the Views below"""
+
+
+class EvidenceCreateView(EvidenceBaseView, CreateView):
+    template_name = 'Evidence/Evidence_form.html'
+    # template_name = 'Evidence/Evidence_form.html'
+
+
+class EvidenceUpdateView(EvidenceBaseView, UpdateView):
+    template_name = 'Evidence/Evidence_form.html'
+    """View to update a Evidence"""
+
+
+class EvidenceDeleteView(EvidenceBaseView, DeleteView):
+    template_name = 'Evidence/Evidence_confirm_delete.html'
+    """View to delete a Evidence"""
 # endregion

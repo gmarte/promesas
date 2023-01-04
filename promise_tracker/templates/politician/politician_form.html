@@ -19,7 +19,8 @@
                 <hr>
                 {{ formset.as_p }}
                 <input type="submit" class="btn btn-lg btn-primary" value="Save">
-                <div class="text-end"><a href="{% url 'politicians' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a></div>
+                <a href="{% url 'politicians' %}" class="btn btn-outline-primary btn-lg my-5">BACK</a>
+                <!-- <div class="text-end"></div> -->
             </div>
         </form>
         </div>

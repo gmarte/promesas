@@ -6,7 +6,7 @@
     <div class="card-header bg-primary text-white px-4">
         <div class="d-flex justify-content-between align-items-center">
             <div class="me-4">
-                <h2 class="card-title text-white mb-0">Politician</h2>
+                <h2 class="card-title text-white mb-0">Promises</h2>
                 <div class="card-subtitle">The lies to get into power</div>
             </div>            
         </div>
@@ -18,12 +18,10 @@
             <table id="datatablesSimple">
             <thead>
                 <tr>                    
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Party</th>
-                    <th>Position</th>                                        
-                    <th>Religion</th>
-                    <th>Status</th>
+                    <th>Title</th>                    
+                    <th>Promise</th>
+                    <th>Creator</th>                    
+                    <th>Active</th>                    
                     <th>View</th>
                     {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
                     <th>Update</th>
@@ -32,18 +30,16 @@
                 </tr>
             </thead>
             <tbody>
-                {% for politician in politician_list %}                                  
+                {% for evidence in evidence_list %}                                  
                 <tr>                    
-                    <td>{{politician.fname}}</td>
-                    <td>{{politician.lname}}</td>
-                    <td>{{politician.party}}</td>
-                    <td>{{politician.position}}</td>
-                    <td>{{politician.religion}}</td>
-                    <td>{{politician.status}}</td>
-                    <td> <a href="{% url 'politician_detail' politician.id %}" class="btn btn-outline-primary btn-sm">View</a></td>
-                    {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
-                    <td><a href="{% url 'politician_update' politician.id %}" class="btn btn-outline-primary btn-sm">Update</a></td>
-                    <td><a href="{% url 'politician_delete' politician.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                    <td>{{evidence.title}}</td>                    
+                    <td>{{evidence.promise.title}}</td>
+                    <td>{{evidence.creator}}</td>
+                    <td>{{evidence.status}}</td>                                                            
+                    <td> <a href="{% url 'evidence_detail' evidence.id %}" class="btn btn-outline-primary btn-sm">View</a></td>
+                    {% if user.is_authenticated and user.id == evidence.creator.id or user.is_superuser %}
+                    <td><a href="{% url 'evidence_update' evidence.id %} " class="btn btn-outline-primary btn-sm">Update</a></td>
+                    <td><a href="{% url 'evidence_delete' evidence.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
                     {% endif %}                    
                 </tr>
                 {% endfor %}

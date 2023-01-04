@@ -12,6 +12,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     # path('', views.PromiseListView.as_view(), name='index'),
     path('promises/', views.PromiseListView.as_view(), name='promises'),
+    path('user/promises', login_required(views.PromiseListView.as_view()), name='promises_user'),
     path('promises/<int:pk>/detail', views.PromiseDetailView.as_view(), name='promise_detail'),
     path('promises/create/', login_required(views.PromiseCreateView.as_view()), name='promise_create'),
     path('promises/<int:pk>/update/', login_required(views.PromiseUpdateView.as_view()), name='promise_update'),
@@ -38,6 +39,12 @@ urlpatterns = [
     path('politicians/create/',login_required(views.PoliticianCreateView.as_view()), name='politician_create'),
     path('politicians/<int:pk>/update/',login_required(views.PoliticianUpdateView.as_view()), name='politician_update'),
     path('politicians/<int:pk>/delete/',login_required(views.PoliticianDeleteView.as_view()), name='politician_delete'),     
+    #evidences    
+     path('evidences/',login_required(views.EvidenceListView.as_view()), name='evidences'),
+    path('evidences/<int:pk>/detail',views.EvidenceDetailView.as_view(), name='evidence_detail'),
+    path('evidences/create/',login_required(views.EvidenceCreateView.as_view()), name='evidence_create'),
+    path('evidences/<int:pk>/update/',login_required(views.EvidenceUpdateView.as_view()), name='evidence_update'),
+    path('evidences/<int:pk>/delete/',login_required(views.EvidenceDeleteView.as_view()), name='evidence_delete'),  
     # API
     path("api/", include(("promise_tracker.routers", "api"), namespace="api")),    
 ]+ static(settings.MEDIA_URL,

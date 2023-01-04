@@ -6,7 +6,7 @@
     <div class="card-header bg-primary text-white px-4">
         <div class="d-flex justify-content-between align-items-center">
             <div class="me-4">
-                <h2 class="card-title text-white mb-0">New promise </h2>
+                <h2 class="card-title text-white mb-0">New Evidence </h2>
                 <div class="card-subtitle">The lies to get into power</div>
             </div>            
         </div>
@@ -18,11 +18,9 @@
                 {% csrf_token %}
                 <div class="form-group">
                     {{ form.as_div }}    
-                    <hr>
-                    <h2>Evidences</h2>
-                    {{ formset.as_div }}        
+                    <hr>                    
                     <input type="submit" class="btn btn-lg btn-primary" value="Save">  
-                    <a href="{% url 'promises' %}" class=" btn btn-outline-primary btn-lg my-5">BACK</a>                
+                    <a href="{% url 'evidences' %}" class=" btn btn-outline-primary btn-lg my-5">BACK</a>                
                     <!-- <div class="text-end"><a href="{% url 'promises' %}" class=" btn btn-primary btn-lg my-5">BACK</a></div> -->
                 </div>
             </form>            
