@@ -59,6 +59,39 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="card-body p-4">
+        <!-- Simple DataTables example-->   
+        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+            <div class="dataTable-container">
+            <table id="datatablesSimple">
+            <thead>
+                <tr>                    
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Politician</th>
+                    <th>Creator</th>
+                    <th>Date</th>
+                    <th>Evidences</th>
+                    <th>Active</th>                                                           
+                </tr>
+            </thead>
+            <tbody>
+                {% for promise in promise_list %}                                  
+                <tr>                    
+                    <td>{{promise.title}}</td>
+                    <td>{{promise.rating}}</td>
+                    <td>{{promise.politician}}</td>
+                    <td>{{promise.creator}}</td>
+                    <td>{{promise.date}}</td>
+                    <td>{{promise.evidence_count}}</td>
+                    <td>{{promise.status}}</td>                                                                          
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
     </div>                  
 </div>
 
