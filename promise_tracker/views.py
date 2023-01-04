@@ -397,6 +397,13 @@ class PoliticianListView(PoliticianBaseView, ListView):
 
 class PoliticianDetailView(PoliticianBaseView, DetailView):
     template_name = 'politician/politician_detail.html'
+
+    def get_context_data(self, **kwargs):     
+        politician = self.get_object()   
+        # formset = self.PoliticianPartyFormSet(queryset=Politician.objects.none())
+        context = super().get_context_data(**kwargs)
+        context['promise_list'] = politician.politician_promises.all()        
+        return context          
     
     """View to list the details from one Politician.
     Use the 'Politician' variable in the template to access
