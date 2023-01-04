@@ -1,0 +1,52 @@
+{% extends "promise_tracker/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="card card-raised">
+    <div class="card-header bg-primary text-white px-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="me-4">
+                <h2 class="card-title text-white mb-0">Promises</h2>
+                <div class="card-subtitle">The lies to get into power</div>
+            </div>            
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <!-- Simple DataTables example-->   
+        <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+            <div class="dataTable-container">
+            <table id="datatablesSimple">
+            <thead>
+                <tr>                    
+                    <th>Title</th>                    
+                    <th>Promise</th>
+                    <th>Creator</th>                    
+                    <th>Active</th>                    
+                    <th>View</th>
+                    {% if user.is_authenticated and user.id == promise.creator.id or user.is_superuser %}
+                    <th>Update</th>
+                    <th>Delete</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for evidence in evidence_list %}                                  
+                <tr>                    
+                    <td>{{evidence.title}}</td>                    
+                    <td>{{evidence.promise.title}}</td>
+                    <td>{{evidence.creator}}</td>
+                    <td>{{evidence.status}}</td>                                                            
+                    <td> <a href="{% url 'evidence_detail' evidence.id %}" class="btn btn-outline-primary btn-sm">View</a></td>
+                    {% if user.is_authenticated and user.id == evidence.creator.id or user.is_superuser %}
+                    <td><a href="{% url 'evidence_update' evidence.id %} " class="btn btn-outline-primary btn-sm">Update</a></td>
+                    <td><a href="{% url 'evidence_delete' evidence.id %}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                    {% endif %}                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+</div>    
+{% endblock %}
