@@ -1,7 +1,7 @@
 venv/
 .vscode/
 .code-workspace/
-
+*.env
 ### Django ###
 *.log
 *.pot
