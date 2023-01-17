@@ -12,14 +12,14 @@ let newRatingParty = []
 promiseParty = getData('/api/promise/party');
 promisePolitician = getData('/api/promise/politician');
 ratingParty = getData('/api/promise/party?id=1');
-ratingPolitician  = getData('http://127.0.0.1:8000/api/promise/politician?id=1');
+ratingPolitician  = getData('/api/promise/politician?id=1');
 
 function change_rating(id){        
     let chartStatus = Chart.getChart("dashboardPieParty");
     if (chartStatus != undefined) {
         chartStatus.destroy();
     }     
-    axios.get('http://127.0.0.1:8000/api/promise/party?id='+id).then(response => {
+    axios.get('/api/promise/party?id='+id).then(response => {
         ratings =  response.data.ratings;
         // document.querySelector('#profile_pic').src = response.photo;
         document.querySelector('#party_name').innerHTML = response.data.name;
@@ -47,7 +47,7 @@ function change_ratingp(id){
     if (chartStatus != undefined) {
         chartStatus.destroy();
     }     
-    axios.get('http://127.0.0.1:8000/api/promise/politician?id='+id).then(response => {
+    axios.get('/api/promise/politician?id='+id).then(response => {
         ratings =  response.data.ratings;        
         document.querySelector('#politician_name').innerHTML = response.data.fname + ' ' +response.data.lname;
         document.querySelector('#politician_id').href = '/politicians/'+response.data.id+'/detail';
