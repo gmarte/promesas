@@ -493,14 +493,14 @@ class EvidenceBaseView(View):
 
 
 class EvidenceListView(EvidenceBaseView, ListView):
-    template_name = 'Evidence/Evidence_list.html'
+    template_name = 'evidence/evidence_list.html'
     """View to list all Evidences.
     Use the 'Evidence_list' variable in the template
     to access all Evidence objects"""
 
 
 class EvidenceDetailView(EvidenceBaseView, DetailView):
-    template_name = 'Evidence/Evidence_detail.html'
+    template_name = 'evidence/evidence_detail.html'
     
     """View to list the details from one Evidence.
     Use the 'Evidence' variable in the template to access
@@ -508,16 +508,16 @@ class EvidenceDetailView(EvidenceBaseView, DetailView):
 
 
 class EvidenceCreateView(EvidenceBaseView, CreateView):
-    template_name = 'Evidence/Evidence_form.html'
+    template_name = 'evidence/evidence_form.html'
     # template_name = 'Evidence/Evidence_form.html'
 
 
 class EvidenceUpdateView(EvidenceBaseView, UpdateView):
-    template_name = 'Evidence/Evidence_form.html'
+    template_name = 'evidence/evidence_form.html'
     """View to update a Evidence"""
 
 
 class EvidenceDeleteView(EvidenceBaseView, DeleteView):
-    template_name = 'Evidence/Evidence_confirm_delete.html'
+    template_name = 'evidence/evidence_confirm_delete.html'
     """View to delete a Evidence"""
 # endregion
